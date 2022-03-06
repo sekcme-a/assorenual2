@@ -4,7 +4,7 @@
   /* margin: 10px 20px;   */
   background-color: rgb(252, 252, 252);
   font-family: 'Noto Sans KR',
-  serif;
+  serif !important;
 }
 .navbarVerticle .title{
   height: 50px;
