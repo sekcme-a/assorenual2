@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MenuItems } from "data/MenuItems"
+import { MenuItems } from "src/data/MenuItems"
 import Image from "next/image"
 import Link from "next/link";
 import CloseIcon from '@mui/icons-material/Close';
