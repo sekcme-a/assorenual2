@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'KoPubDotumMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.button__white{
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #333;
+  display: inline-block;
+  font-family: "KoPubDotumMedium",sans-serif;
+  font-weight: bold;
+}

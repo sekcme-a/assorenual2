@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+.subpage__container .location__container {
+  margin: 30px 0;
+  height: 20px;
+  font-size: 14px;
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  align-items: center;
+  font-family: 'Noto Sans KR',
+  serif;
+}
+.subpage__container .location__container .homeIcon{
+  display: inline-block;
+  font-size: 13px;
+  margin-right: 6px;
+  color: rgb(255, 115, 0);
+}
+.subpage__container .location__container .arrowRightIcon{
+  color: #999;
+  font-size: 13px;
+}
+.subpage__container .location__container h4{
+  display: inline-block;
+  color: #444;
+  cursor: pointer;
+}
+.subpage__container .location__container h4:last-child{
+  color: black;
+  font-weight: bold;
+}
+@media screen and (max-width: 868px) {
+  .subpage__container .location__container{
+    margin: 10px 0;
+    font-size: 12px;
+  }
+}

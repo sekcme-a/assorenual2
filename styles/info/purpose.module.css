@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'HSSaemaul-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSSaemaul-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.content__container{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Noto Sans KR',
+  sans-serif;
+  background-color: rgb(255, 252, 248);
+  padding: 10px;
+}
+.content__container h2{
+  color: rgb(255, 115, 0);
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.list{
+  margin-top: 15px;
+  width: 90%;
+}
+.list .item__container{
+  background-color: white;
+  width: 100%;
+  border: 1px solid rgb(255, 115, 0);
+  border-radius: 5px;
+  margin: 15px 0;
+  padding: 14px 10px 14px 28px;
+  position: relative;
+  transition: .8s;
+  cursor: pointer;
+}
+.list .item__container:hover{
+  padding-left: 35px;
+  color: rgb(255, 115, 0);
+  transition: .8s;
+}
+.list .item__container .number{
+  font-family: 'HSSaemaul-Regular', sans-serif;
+  background-color: rgb(255,115,0);
+  width: max-content;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  color: black !important;
+  font-size: 15px;
+}
+.list .item__container .content{
+  font-size: 15px;
+  word-break: keep-all;
+  line-height: 17px;
+} 
+
+@media screen and (max-width: 680px){
+  .content__container{
+    margin-top: 20px;
+  }
+  .content__container h2{
+    font-size: 17px;
+  }
+  .list{
+    margin-top:10px;
+  }
+  .list .item__container {
+    padding: 10px 10px 10px 24px;
+  }
+  .list .item__container:hover{
+    padding-left: 28px;
+  }
+  .list .item__container .number{
+    font-size: 12px;
+  }
+  .list .item__container .content{
+    font-size: 13px;
+    line-height: 14px;
+  }
+}

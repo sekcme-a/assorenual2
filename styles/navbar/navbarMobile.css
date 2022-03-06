@@ -1,0 +1,92 @@
+.navbar-mobile{
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  width: 100%;
+  font-family: 'Noto Sans KR',
+  serif;
+}
+.navbar-mobile-logo{
+  margin-left: 20px;
+  cursor: pointer;
+  width: 200px;
+}
+.mobile-menu-icon{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.mobile-nav-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* height: 150%; */
+  /*모바일 메뉴바 크기*/
+  position: absolute;
+  top: 60px;
+  left: -100%;
+  opacity: 1;
+  transition: all 0.5s ease;
+  justify-content: flex-start;
+  color: white;
+  font-family: "NanumSquareRound",
+  sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+.mobile-arrowIcon{
+  padding-top:6px;
+}
+
+
+.mobile-nav-menu.active {
+  background: rgba(51, 50, 50, 0.98);
+  left: 0;
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.mobile-nav-title{
+  padding: 13px 0;
+  border-bottom: 2px solid #555;
+  cursor: pointer;
+  padding-left: 12px;
+}
+.mobile-nav-title.mobile-nav-title-selected {
+  background: #222;
+}
+
+.mobile-nav-item{
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.589);
+  cursor: pointer;
+  font-size: 15px;
+}
+.mobile-nav-item a{
+  text-decoration: none;
+  color: white;
+}
+.mobile-login{
+  padding: 4px 4px;
+  border-radius: 4px;
+  background-color: #c6eeec6b;
+  border: 1.5px solid #55bcc9;
+  margin-right: 15px;
+  font-size: 16px;
+  /* font-weight: bold; */
+  /* width: 150px; */
+  display: inline-block;
+  word-break: keep-all;
+  text-align: center;
+}
+
+@media screen and (max-width: 420px){
+  .mobile-login {
+    width: 80px;
+    font-size: 11px;
+  }
+}
