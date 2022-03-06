@@ -8,6 +8,7 @@ const Login = () => {
         <div className={style.loginContainer}>
           <h4>Admin Login</h4>
           <div className={style.border} />
+          <div className={style.loginButton}>구글로 로그인</div>
         </div>
         <div className={style.styleContainer}>
           <h4>국민의 건강과<br/>행복의 장을 여는<br/></h4>
