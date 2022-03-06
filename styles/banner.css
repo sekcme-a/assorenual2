@@ -48,6 +48,9 @@
   .banner__container h2{
     margin-right: 40px;
   }
+  .banner__container h2.hover{
+    margin-right: 70px;
+  }
 }
 @media screen and (max-width: 1070px){
   .banner__container{
