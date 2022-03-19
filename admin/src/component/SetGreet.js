@@ -108,7 +108,7 @@ const SetGreet = () => {
 
       <div className={`${style.container} ${style.container3}`}>
         <h4>인사말 변경</h4>
-        <p className={style.warning}>*단락은 {`<br/>`} 로 구분해주세요.</p>
+        <p className={style.warning}>*단락은 {`</>`} 로 구분해주세요.</p>
         <p><textarea  value={text4} onChange={onText4Change} rows="15" cols="120" required/></p>
       </div>
       <Link href="/info/greetPreview"><a className={style.button} target="_blank" onClick={onPreviewClick}>미리보기</a></Link>

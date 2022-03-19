@@ -57,7 +57,7 @@ const Greet = (props) => {
         setTitle(doc.data().title)
         setSubtitle(doc.data().subtitle)
         //인사말의 <br/>부분에서 짤라 배열에 저장
-        const contextData = doc.data().context.split('<br/>')
+        const contextData = doc.data().context.split('</>')
         const length = parseInt(contextData.length / 3)
         let temp1 = [];
         let temp2 = [];
@@ -87,7 +87,7 @@ const Greet = (props) => {
         setTitle(doc.data().title)
         setSubtitle(doc.data().subtitle)
         //인사말의 <br/>부분에서 짤라 배열에 저장
-        const contextData = doc.data().context.split('<br/>')
+        const contextData = doc.data().context.split('</>')
         const length = parseInt(contextData.length / 3)
         let temp1 = [];
         let temp2 = [];
