@@ -13,10 +13,13 @@ import Footer from "src/components/public/Footer"
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import NavbarMobile from "src/components/public/NavbarMobile"
+import { UserContext } from "src/data/context"
+import { useUserData } from "src/firebase/useUserData"
 
 function MyApp({ Component, pageProps }) {
   const [mobileMode, setMobileMode] = useState("false")
 
+  const userData = useUserData();
   // PC/모바일 환경에 따라 navbar 바꾸기위함
   useEffect(() => {
     function handleResize() {
@@ -30,14 +33,14 @@ function MyApp({ Component, pageProps }) {
   }, [])
   
   return (
-    <>
+    <UserContext.Provider value={userData}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       {mobileMode ? <NavbarMobile /> : <Navbar />}
       <Component {...pageProps} />
       <Footer />
-    </>
+    </UserContext.Provider>
   )
 }
 

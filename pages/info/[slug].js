@@ -24,8 +24,12 @@ const Info = () => {
   //banner에 랜덤한 자연수를 props로 넘겨 몇가지 banner사진중 랜덤으로 보여줌
   useEffect(() => {
     setBannerRandom(getRandom(1, 5))
+    let path = slug;
+    if (path === "greetPreview") path = "greet"
+    if (path ==="purposePreview") path = "purpose"
+    if (path ==="chartPreview") path = "chart"
     MenuItems.forEach((item) => {
-      if (item.path === `/info/${slug}`) {
+      if (item.path === `/info/${path}`) {
         setTitle(item.title)
         setSubtitle(item.subtitle)
         return;
@@ -41,9 +45,12 @@ const Info = () => {
         <LocNav title={title} subtitle={subtitle} />
         <NavbarVerticle loc={title}/>
         <div className="content__container">
-          {slug==="greet" && <Greet/>}
-          {slug === "purpose" && <Purpose />}
-          {slug === "chart" && <Chart />}
+          {slug==="greet" && <Greet preview="false" />}
+          {slug === "purpose" && <Purpose preview="false"/>}
+          {slug === "chart" && <Chart preview="false"/>}
+          {slug==="greetPreview" && <Greet preview="true" />}
+          {slug==="purposePreview" && <Purpose preview="true" />}
+          {slug==="chartPreview" && <Chart preview="true" />}
         </div>
       </div>
     </>

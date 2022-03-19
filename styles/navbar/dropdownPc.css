@@ -26,7 +26,7 @@
   background-color: rgb(246, 246, 246);
   text-align: right;
   padding-right: 30px;
-  padding-top: 20px;
+  padding-top: 12px;
   padding-bottom: 10px;
 }
 .dropdown-m h4{
@@ -36,14 +36,14 @@
 }
 .dropdown-m h3{
   padding-top: 6px;
-  font-size: 30px;
-  margin-bottom: 8px;
+  font-size: 25px;
+  margin-bottom: 6px;
 }
 
 .dropdown-content{
   width: 75%;
   padding-left: 40px;
-  padding-top: 25px;
+  padding-top: 15px;
   /* margin-right: 100px; */
 }
 
@@ -70,6 +70,7 @@
 }
 .dropdown-text{
   color: #555 !important;
+  font-size: 17px;
 }
 .dropdown-text:last-child {
   border-right: none !important;

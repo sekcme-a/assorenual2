@@ -154,3 +154,15 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+.preview{
+  position: fixed;
+  top:0;
+  right: 40px;
+  margin: 0 auto;
+  background-color: #beabea;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 3px;
+}

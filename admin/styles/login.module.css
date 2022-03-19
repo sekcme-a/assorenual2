@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7c2ae8;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .loginContainer{
+  background-color: white;
+  width: 400px;
+  height: 460px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container .loginContainer h4{
+  font-family: "Poppins", sans-serif;
+  font-size: 23px;
+  text-align: start;
+  width: 400px;
+  font-weight: bold;
+  padding-left: 30px; 
+}
+.container .border{
+  width: 30px;
+  height: 2.5px;
+  background-color: #8c4ae2;
+  margin-right: 300px;
+  margin-top: 3px;
+}
+.container .loginButtonContainer{
+  width: 100%;
+  margin-top: 30px;
+}
+.container .loginButton{
+  margin: 0 28px;
+  width: calc(100%-56px);
+  height: 40px;
+  background-color: #7c2ae8;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.container .loginButton p {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+.container .styleContainer{
+  background-color: #8c4ae2;
+  width: 400px;
+  height: 460px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+.container .styleContainer h4{
+  width: 100%;
+  line-height: 30px;
+}
+.container .styleContainer h3{
+  margin-top: 15px;
+  width: 100%;
+  font-size: 30px;
+}

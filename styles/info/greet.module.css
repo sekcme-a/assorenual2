@@ -15,6 +15,7 @@
   sans-serif;
   background-color: rgb(255, 252, 248);
   padding: 10px;
+  width: 100%;
 }
 .content__container h6{
   margin-top: 10px;
@@ -29,6 +30,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
+  height: max-content
 }
 .content__container h5{
   width: 100%;
@@ -40,7 +42,11 @@
   width: 100%;
   color: rgb(65, 51, 40);
   font-size: 18px;
-  line-height: 22px;
+  line-height: 26px;
+  white-space: pre-line;
+}
+.text__container{
+  justify-content: start;
 }
 
 @media screen and (max-width: 680px){
