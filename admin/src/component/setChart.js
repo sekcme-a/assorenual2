@@ -64,7 +64,7 @@ const SetChart = () => {
     <form className={style.mainContainer}>
       <div className={`${style.container} ${style.container1}`}>
         <h4>이미지 변경</h4>
-        <p className={style.warning}>*이미지의 크기가 2MB보다 클 경우 자동으로 압축됩니다.</p>
+        <p className={style.warning}>*이미지의 용량이 너무 크면 로딩시간이 오래걸립니다.</p>
         <p>이미지 선택 : <input type="file" name="selectedImg[]" onChange={onImgChange} accept="image/*"/></p>
       </div>
 

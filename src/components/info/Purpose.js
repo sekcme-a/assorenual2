@@ -14,19 +14,22 @@ const Purpose = (props) => {
   const [title, setTitle] = useState("")
   const [context, setContext] = useState([])
   
-  useEffect(async() => {
+  useEffect(() => {
+    const fetchData = async () => {
     if (props.preview === "false") {
-      await db.collection("setting").doc("purpose").get().then((doc) => {
-        setTitle(doc.data().title)
-        setContext(doc.data().context)
-      })
+        await db.collection("setting").doc("purpose").get().then((doc) => {
+          setTitle(doc.data().title)
+          setContext(doc.data().context)
+        })
+      }
+      else {
+        await db.collection("preview").doc("purpose").get().then((doc) => {
+          setTitle(doc.data().title)
+          setContext(doc.data().context)
+        })
+      }
     }
-    else {
-      await db.collection("preview").doc("purpose").get().then((doc) => {
-        setTitle(doc.data().title)
-        setContext(doc.data().context)
-      })
-    }
+    fetchData();
   },[])
   return (
     <>
