@@ -25,7 +25,6 @@ const SetChart = () => {
   const onPreviewClick = async () => {
     const imgUrl = await uploadPreviewImageToStorage();
     db.collection("preview").doc("chart").set({imgUrl: imgUrl})
-    alert("적용되었습니다.")
   }
 
   //이미지를 storage preview폴더에 저장하고, 이미지url을 반환

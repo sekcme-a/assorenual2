@@ -5,7 +5,7 @@ import AdminNavbar from "admin/src/component/AdminNavbar"
 import style from "admin/styles/home.module.css"
 import SetGreet from "admin/src/component/SetGreet"
 import SetPurpose from "admin/src/component/SetPurpose"
-import SetChart from "admin/src/component/SetChart"
+import SetChart from "admin/src/component/SetCharts"
 import { adminMenuItems } from "src/data/adminMenuItems"
 
 const Admin = () => {
