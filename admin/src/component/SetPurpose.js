@@ -9,26 +9,6 @@ const SetPurpose = () => {
 
   const onTitleChange = (e) => { setTitle(e.target.value) }
   const onContextTransferChange = (e)=>{setContextTransfer(e.target.value)}
-  
-  // const onSubmitClick = async (event) => {
-  //   event.preventDefault();
-  //   if(text1==="" || text2===""|| text3==="" || text4==="")
-  //     alert("빈칸을 채워주세요.")
-  //   else {
-  //     const imgUrl = await uploadImageToStorage();
-  //     db.collection("setting").doc("greet").set({imgUrl: imgUrl, imgTitle: text1, title: text2, subtitle: text3, context: text4})
-  //     alert("적용되었습니다.")
-  //   }
-  // }
-
-  // const onPreviewClick = async () => {
-  //   if(text1==="" || text2===""|| text3==="" || text4==="" || text1===undefined|| text2===undefined|| text3===undefined|| text4===undefined)
-  //     alert("빈칸을 채워주세요.")
-  //   else {
-  //     const imgUrl = await uploadPreviewImageToStorage();
-  //     db.collection("preview").doc("greet").set({imgUrl: imgUrl, imgTitle: text1, title: text2, subtitle: text3, context: text4})
-  //   }
-  // }
 
 
   //firebase 데이터 가져오기

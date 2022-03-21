@@ -8,6 +8,8 @@ import 'styles/container.css'
 import 'styles/navbar/navbarVerticle.css'
 import 'styles/navbar/locNav.css'
 import 'styles/navbar/navbarMobile.css'
+import 'styles/loader.css'
+import 'styles/lazyItem.css'
 import Navbar from "src/components/public/Navbar"
 import Footer from "src/components/public/Footer"
 import Head from "next/head"
@@ -36,6 +38,7 @@ function MyApp({ Component, pageProps }) {
     <UserContext.Provider value={userData}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></script>
       </Head>
       {mobileMode ? <NavbarMobile /> : <Navbar />}
       <Component {...pageProps} />

@@ -3,15 +3,12 @@ import { useRouter } from "next/router"
 import Banner from "src/components/public/Banner"
 import NavbarVerticle from "src/components/public/NavbarVerticle"
 import { MenuItems } from "src/data/menuItems"
+import GroupList from "src/components/group/GroupList"
 import LocNav from "src/components/public/LocNav"
-import Greet from "src/components/info/Greet"
-import Purpose from "src/components/info/Purpose"
-import Chart from "src/components/info/Chart"
-import Status from "src/components/info/Status"
-import Location from "src/components/info/Location"
+import SubMenuTitle from "src/components/public/SubMenuTitle"
 
 
-const Info = () => {
+const Group = () => {
   const [bannerRandom, setBannerRandom] = useState()
   const [title, setTitle] = useState("")
   const [subtitle, setSubtitle] = useState("")
@@ -28,13 +25,12 @@ const Info = () => {
   useEffect(() => {
     setBannerRandom(getRandom(1, 5))
     let path = slug;
-    if (path === "greetPreview") { path = "greet"; setIsPreview(true) }
-    if (path ==="purposePreview") {path = "purpose"; setIsPreview(true) }
-    if (path ==="chartPreview") {path = "chart"; setIsPreview(true) }
-    if (path ==="statusPreview") {path = "status"; setIsPreview(true) }
-    if (path === "locationPreview") {path = "location"; setIsPreview(true) }
+    if (path === "nationPreview") { path = "nation"; setIsPreview(true) }
+    if (path === "internationPreview") {path = "internation"; setIsPreview(true) }
+    if (path === "sportsPreview") {path = "sports"; setIsPreview(true) }
+    if (path === "sanhaPreview") {path = "sanha"; setIsPreview(true) }
     MenuItems.forEach((item) => {
-      if (item.path === `/info/${path}`) {
+      if (item.path === `/group/${path}`) {
         setTitle(item.title)
         setSubtitle(item.subtitle)
         return;
@@ -51,19 +47,18 @@ const Info = () => {
         <LocNav title={title} subtitle={subtitle} />
         <NavbarVerticle loc={title}/>
         <div className="content__container">
-          {slug==="greet" && <Greet preview="false" />}
-          {slug === "purpose" && <Purpose preview="false"/>}
-          {slug === "chart" && <Chart preview="false"/>}
-          {slug === "status" && <Status preview="false"/>}
-          {slug === "location" && <Location preview="false"/>}
-          {slug==="greetPreview" && <Greet preview="true" />}
-          {slug==="purposePreview" && <Purpose preview="true" />}
-          {slug==="chartPreview" && <Chart preview="true" />}
-          {slug==="statusPreview" && <Status preview="true" />}
-          {slug==="locationPreview" && <Location preview="true" />}
+          <SubMenuTitle title={subtitle} subtitle={`대한생활체육회의 ${subtitle}입니다.`} />
+          {slug === "nation" && <GroupList type="nation" preview="false" />}
+          {slug === "internation" && <GroupList type="internation" preview="false" />}
+          {slug === "sports" && <GroupList type="sports" preview="false" />}
+          {slug === "sanha" && <GroupList type="sanha" preview="false" />}
+          {slug==="nationPreview" && <GroupList type="nation" preview="true" />}
+          {slug==="internationPreview" && <GroupList type="internation" preview="true" />}
+          {slug==="sportsPreview" && <GroupList type="sports" preview="true" />}
+          {slug==="sanhaPreview" && <GroupList type="sanha" preview="true" />}
         </div>
       </div>
     </>
   )
 }
-export default Info;
+export default Group;

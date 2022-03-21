@@ -43,7 +43,7 @@
   color: rgb(65, 51, 40);
   font-size: 18px;
   line-height: 26px;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 .text__container{
   justify-content: start;

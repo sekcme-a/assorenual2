@@ -11,8 +11,7 @@ const SetChart = () => {
 
   const onImgChange = async (e) => {
     setImageChanged(true);
-    if(e!==undefined)
-      setImage(await getCompressedImg(e))
+    setImage(e.target.files[0])
   }
 
   const onSubmitClick = async (event) => {
@@ -30,9 +29,9 @@ const SetChart = () => {
   //이미지를 storage preview폴더에 저장하고, 이미지url을 반환
   const uploadPreviewImageToStorage = async () => {
     return new Promise(async function (resolve, reject) {
-      const fileRef = storage.ref().child(`preview/greet`)
+      const fileRef = storage.ref().child(`preview/chart`)
       if (imageChanged === true) {
-        await fileRef.put(image.imgData)
+        await fileRef.put(image)
         const url = await fileRef.getDownloadURL()
         resolve(url)
       }
@@ -42,9 +41,9 @@ const SetChart = () => {
   }
   const uploadImageToStorage = async () => {
     return new Promise(async function (resolve, reject) {
-      const fileRef = storage.ref().child(`setting/greet`)
+      const fileRef = storage.ref().child(`setting/chart`)
       if(imageChanged===true)
-        await fileRef.put(image.imgData)
+        await fileRef.put(image)
       else
         resolve(image)
       const url = await fileRef.getDownloadURL()

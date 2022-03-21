@@ -50,79 +50,73 @@ const Greet = (props) => {
   const [context3, setContext3] = useState([])
 
   useEffect(async () => {
-    if (props.preview === "true") {
-      await db.collection("preview").doc("greet").get().then((doc) => {
-        setImgURL(doc.data().imgUrl)
-        setImgTitle(doc.data().imgTitle)
-        setTitle(doc.data().title)
-        setSubtitle(doc.data().subtitle)
-        //인사말의 <br/>부분에서 짤라 배열에 저장
-        const contextData = doc.data().context.split('</>')
-        const length = parseInt(contextData.length / 3)
-        let temp1 = [];
-        let temp2 = [];
-        let temp3 = [];
-        console.log(length)
-        for (let i = 0; i < length; i++){
-          // if(temp1.length<length)
-            temp1.push(contextData[i])
-        }
-        setContext1(temp1)
-        for (let i = length; i < length*2; i++){
-          // if(temp2.length<length)
-            temp2.push(contextData[i])
-        }
-        setContext2(temp2)
-        for (let i = length*2; i < contextData.length; i++){
-          // if(temp3.length<length)
-            temp3.push(contextData[i])
-        }
-        setContext3(temp3)
-      })
+    const fetchData = async () => {
+      if (props.preview === "true") {
+        await db.collection("preview").doc("greet").get().then((doc) => {
+          setImgURL(doc.data().imgUrl)
+          setImgTitle(doc.data().imgTitle)
+          setTitle(doc.data().title)
+          setSubtitle(doc.data().subtitle)
+          //인사말의 <br/>부분에서 짤라 배열에 저장
+          const contextData = doc.data().context.split('</>')
+          const length = parseInt(contextData.length / 3)
+          let temp1 = [];
+          let temp2 = [];
+          let temp3 = [];
+          console.log(length)
+          for (let i = 0; i < length; i++){
+            // if(temp1.length<length)
+              temp1.push(contextData[i])
+          }
+          setContext1(temp1)
+          for (let i = length; i < length*2; i++){
+            // if(temp2.length<length)
+              temp2.push(contextData[i])
+          }
+          setContext2(temp2)
+          for (let i = length*2; i < contextData.length; i++){
+            // if(temp3.length<length)
+              temp3.push(contextData[i])
+          }
+          setContext3(temp3)
+        })
+      }
+      else {
+        await db.collection("setting").doc("greet").get().then((doc) => {
+          setImgURL(doc.data().imgUrl)
+          setImgTitle(doc.data().imgTitle)
+          setTitle(doc.data().title)
+          setSubtitle(doc.data().subtitle)
+          //인사말의 <br/>부분에서 짤라 배열에 저장
+          const contextData = doc.data().context.split('</>')
+          const length = parseInt(contextData.length / 3)
+          let temp1 = [];
+          let temp2 = [];
+          let temp3 = [];
+          console.log(length)
+          for (let i = 0; i < length; i++){
+            // if(temp1.length<length)
+              temp1.push(contextData[i])
+          }
+          setContext1(temp1)
+          for (let i = length; i < length*2; i++){
+            // if(temp2.length<length)
+              temp2.push(contextData[i])
+          }
+          setContext2(temp2)
+          for (let i = length*2; i < contextData.length; i++){
+            // if(temp3.length<length)
+              temp3.push(contextData[i])
+          }
+          setContext3(temp3)
+        })
+      }
     }
-    else {
-      await db.collection("setting").doc("greet").get().then((doc) => {
-        setImgURL(doc.data().imgUrl)
-        setImgTitle(doc.data().imgTitle)
-        setTitle(doc.data().title)
-        setSubtitle(doc.data().subtitle)
-        //인사말의 <br/>부분에서 짤라 배열에 저장
-        const contextData = doc.data().context.split('</>')
-        const length = parseInt(contextData.length / 3)
-        let temp1 = [];
-        let temp2 = [];
-        let temp3 = [];
-        console.log(length)
-        for (let i = 0; i < length; i++){
-          // if(temp1.length<length)
-            temp1.push(contextData[i])
-        }
-        setContext1(temp1)
-        for (let i = length; i < length*2; i++){
-          // if(temp2.length<length)
-            temp2.push(contextData[i])
-        }
-        setContext2(temp2)
-        for (let i = length*2; i < contextData.length; i++){
-          // if(temp3.length<length)
-            temp3.push(contextData[i])
-        }
-        setContext3(temp3)
-      })
-    }
+    fetchData()
   },[])
-
-  // const loadContext = (num) => {
-  //   const result= []
-  //   result.push(<div>hi</div>)
-  //   result.push(<div>hi</div>)
-  //   result.push(<div>hi</div>)
-  //   return result
-  // }
 
   return (  
     <div className={style.container}>
-      {props.preview === "true" && <div className="preview">미리보기중입니다.</div>}
       <SubMenuTitle title="총재 인사말" subtitle="대한생활체육회 총재 김균식의 인사말입니다."/>
       <motion.div className={style.content__container}
         initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 1 } }}>

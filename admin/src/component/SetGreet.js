@@ -73,14 +73,17 @@ const SetGreet = () => {
   }
 
   //firebase 데이터 가져오기
-  useEffect(async() => {
-    await db.collection("setting").doc("greet").get().then((doc) => {
-      setImage(doc.data().imgUrl)
-      setText1(doc.data().imgTitle)
-      setText2(doc.data().title)
-      setText3(doc.data().subtitle)
-      setText4(doc.data().context)
-    })
+  useEffect(() => {
+    const fetchData = async () => {
+      await db.collection("setting").doc("greet").get().then((doc) => {
+        setImage(doc.data().imgUrl)
+        setText1(doc.data().imgTitle)
+        setText2(doc.data().title)
+        setText3(doc.data().subtitle)
+        setText4(doc.data().context)
+      })
+    }
+    fetchData();
   },[])
 
   return (

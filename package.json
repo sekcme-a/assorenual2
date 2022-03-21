@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.4.1",
     "@mui/material": "^5.4.1",
+    "axios": "^0.26.1",
     "browser-image-compression": "^1.0.17",
     "firebase": "^8.9.1",
     "framer-motion": "^6.2.4",

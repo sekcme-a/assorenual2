@@ -1,0 +1,20 @@
+.idPhoto {
+  width: 84px;
+  height: 108px;
+  background-color: #fff;
+  border: .5px solid #777;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.groupImage{
+  width: 100px;
+  border: 1px solid #888;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px){
+  .groupImage{
+    width: 70px;
+  }
+}

@@ -65,7 +65,7 @@ export const MenuItems = [
     type: "sub",
     title: '체육회소개',
     subtitle: '오시는 길',
-    path: '/info/where',
+    path: '/info/location',
     highlight: "",
   },
   {
@@ -86,7 +86,7 @@ export const MenuItems = [
     type: "sub",
     title: '단체소개',
     subtitle: '국제체육회현황',
-    path: '/group/international',
+    path: '/group/internation',
     highlight: "",
   },
   {

@@ -6,6 +6,9 @@ import style from "admin/styles/home.module.css"
 import SetGreet from "admin/src/component/SetGreet"
 import SetPurpose from "admin/src/component/SetPurpose"
 import SetChart from "admin/src/component/SetCharts"
+import SetStatus from "admin/src/component/SetStatus"
+import SetLocation from "admin/src/component/SetLocation"
+import SetGroup from "admin/src/component/SetGroup"
 import { adminMenuItems } from "src/data/adminMenuItems"
 
 const Admin = () => {
@@ -49,6 +52,12 @@ const Admin = () => {
               {slug === "pageSetting1" && <SetGreet />}
               {slug === "pageSetting2" && <SetPurpose />}
               {slug === "pageSetting3" && <SetChart />}
+              {slug === "pageSetting4" && <SetStatus />}
+              {slug === "pageSetting5" && <SetLocation />}
+              {slug === "pageSetting6" && <SetGroup type="nation"/>}
+              {slug === "pageSetting7" && <SetGroup type="internation"/>}
+              {slug === "pageSetting8" && <SetGroup type="sports"/>}
+              {slug === "pageSetting9" && <SetGroup type="sanha"/>}
             </div>
           </>
         ) : (
