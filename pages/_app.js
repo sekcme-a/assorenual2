@@ -38,7 +38,6 @@ function MyApp({ Component, pageProps }) {
     <UserContext.Provider value={userData}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></script>
       </Head>
       {mobileMode ? <NavbarMobile /> : <Navbar />}
       <Component {...pageProps} />
