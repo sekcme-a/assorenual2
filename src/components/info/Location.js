@@ -44,7 +44,7 @@ const Location = (props) => {
     <>
       { isLoading?<Loader /> :
         <>
-          <Script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></Script>
+          
           <SubMenuTitle title="오시는 길" subtitle="대한생활체육회로 오시는 길을 안내드립니다." />
           <Map locX={locX} locY={locY}/>
           <div className={style.title}>찾아오시는 길</div>
