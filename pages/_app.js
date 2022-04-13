@@ -17,6 +17,7 @@ import { useState, useEffect } from "react"
 import NavbarMobile from "src/components/public/NavbarMobile"
 import { UserContext } from "src/data/context"
 import { useUserData } from "src/firebase/useUserData"
+import Script from "next/script"
 
 function MyApp({ Component, pageProps }) {
   const [mobileMode, setMobileMode] = useState("false")
@@ -40,6 +41,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></script>
       </Head>
+      {/* <Script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></Script> */}
       {mobileMode ? <NavbarMobile /> : <Navbar />}
       <Component {...pageProps} />
       <Footer />

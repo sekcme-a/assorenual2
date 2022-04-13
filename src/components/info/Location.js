@@ -4,7 +4,6 @@ import SubMenuTitle from "src/components/public/SubMenuTitle"
 import style from "styles/info/location.module.css"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
-import Script from "next/script"
 
 const Location = (props) => {
 
@@ -44,7 +43,6 @@ const Location = (props) => {
     <>
       { isLoading?<Loader /> :
         <>
-          
           <SubMenuTitle title="오시는 길" subtitle="대한생활체육회로 오시는 길을 안내드립니다." />
           <Map locX={locX} locY={locY}/>
           <div className={style.title}>찾아오시는 길</div>

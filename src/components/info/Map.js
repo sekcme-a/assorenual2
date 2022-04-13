@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import style from "styles/info/location.module.css"
+import Script from "next/script"
 
 const Map =(props)=>{
 
@@ -32,8 +33,12 @@ const Map =(props)=>{
 
   }, [])
       
-    return (
+  return (
+    <>
+      {/* <Script src="https://developers.kakao.com/sdk/js/kakao.js" /> */}
+      <Script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81"></Script>
       <div id="map" className={style.locationMap}></div>
+    </>
     )
 }
 
