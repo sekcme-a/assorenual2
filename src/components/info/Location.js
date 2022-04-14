@@ -16,7 +16,7 @@ const Location = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (props.preview === true) {
+      if (props.preview === "true") {
         await db.collection("preview").doc("location").get().then((doc) => {
           setLocX(doc.data().locX)
           setLocY(doc.data().locY)

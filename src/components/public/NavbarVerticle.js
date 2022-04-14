@@ -16,16 +16,16 @@ const NavbarVerticle = (props) => {
                   {(item.title === props.loc) && item.subtitle && (
                     <>
                         {item.path.includes("notice") ?
-                          <Link href={"/notice/[subtitle]/[page]"} as={`${item.path}/1`} >
-                            <div key={index} className="navItem">
+                          <Link key={index} href={"/notice/[subtitle]/[page]"} as={`${item.path}/1`} >
+                            <div className="navItem">
                               <div className="navLink">
                                 {item.subtitle}
                               </div>
                             </div>
                           </Link>
                           :
-                          <Link href={item.path}>
-                            <div key={index} className="navItem">
+                          <Link key={index} href={item.path}>
+                            <div className="navItem">
                               <div className="navLink">
                                 {item.subtitle}
                               </div>

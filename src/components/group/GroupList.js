@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Loader from "src/components/public/Loader"
-import { firestore as db } from "src/firebase/firebase"
+import { firestore as db, storage } from "src/firebase/firebase"
 import style from "styles/group/groupList.module.css"
 import LazyItem from "src/components/public/LazyItem"
 import Link from "next/link"
@@ -38,6 +38,20 @@ const GroupList = (props) => {
     return result
   }
   
+  const lookClose = (img, name) => {
+    // let obj;
+    let storageRef = storage.ref()
+    // storageRef.child(`group/${img}`).getDownloadURL().then((url) => {
+    //   obj = window.open(url, "", "width=400, height=600,")
+    // }).catch((e)=>{alert(e)})
+    storageRef.child(`group/${img}`).getDownloadURL().then((url) => {
+      var img=new Image();
+      img.src=url;
+      var OpenWindow=window.open("", `_blank`, "width=400, height=600");
+      OpenWindow.document.write(`<style>body{margin:0px;}</style><img src="${url}" width="400">`);
+    }).catch((e)=>{alert(e)})
+    }
+
   return (
     <div>
       {isLoading ? <Loader /> : (
@@ -47,9 +61,9 @@ const GroupList = (props) => {
               <>
                 <div className={style.container} key={index}>
                   <div className={style.title}>{item.name}</div>
-                  <div className={style.imgContainer}>
-                    {item.img === "-" ? <LazyItem src={`group/none.svg`} name={item.name} nameOfClass="groupImage"/>:
-                      <LazyItem src={`group/${item.img}`} name={item.name} nameOfClass="groupImage" />
+                  <div className={style.imgContainer} onClick={()=>lookClose(item.img, item.name)}>
+                    {item.img === "-" ? <LazyItem src={`group/none.svg`} name={item.name} nameOfClass="groupImage" /> :
+                      <LazyItem src={`group/${item.img}`} name={item.name} nameOfClass="groupImage"/>
                     }
                   </div>
                   <div className={style.contextContainer}>

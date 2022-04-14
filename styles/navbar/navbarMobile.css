@@ -1,10 +1,4 @@
-@font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 400;
-  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-}
+
 
 
 .navbar-mobile{
@@ -12,8 +6,8 @@
   align-items: center;
   min-height: 60px;
   width: 100%;
-  font-family: 'NanumSquareRound',
-  serif;
+  font-family: 'Pretendard-Regular',
+  sans-serif;
   z-index: 9999999;
 }
 .navbar-mobile-logo{
@@ -42,13 +36,13 @@
   transition: all 0.5s ease;
   justify-content: flex-start;
   color: white;
-  font-family: "NanumSquareRound",
+  font-family: 'Pretendard-Regular',
   sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 .mobile-arrowIcon{
-  padding-top:6px;
+  padding-top: 12px;
 }
 
 
@@ -61,7 +55,7 @@
 }
 
 .mobile-nav-title{
-  padding: 13px 0;
+  padding: 6px 0 15px 0;
   border-bottom: 2px solid #555;
   cursor: pointer;
   padding-left: 12px;
@@ -85,8 +79,8 @@
   border-radius: 4px;
   /* background-color: #c6eeec6b;
   border: 1.5px solid #55bcc9; */
-  background-color: rgb(212, 237, 247);
-  border: 1.5px solid #55bcc9;  
+  background-color: rgb(255, 222, 195);
+  border: 1.5px solid rgb(255, 115, 0);
   margin-right: 15px;
   font-size: 16px;
   /* font-weight: bold; */
@@ -94,8 +88,8 @@
   display: inline-block;
   word-break: keep-all;
   text-align: center;
-  font-family: 'NanumBarunGothic',
-  serif;
+  font-family: 'Pretendard-Regular',
+  sans-serif;
   
 }
 

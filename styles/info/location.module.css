@@ -18,6 +18,9 @@
   font-size: 12px;
   line-height: 14px;
 }
+.marker a{
+  color: blue;
+}
 
 .locationMap {
   width: 100%;

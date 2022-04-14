@@ -1,0 +1,104 @@
+.menu{
+  margin-top: 18px;
+  width: 100%;
+  background-color: rgba(255, 115, 0, 0.825);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 0px;
+  color: white;
+  text-align: center;
+  font-family: 'Pretendard-Regular',
+  sans-serif;
+  font-size: 17px;
+}
+.menu .count{
+  border-right: 2px solid rgb(255, 217, 186)
+}
+
+.menu .title{
+  border-right: 2px solid rgb(255, 217, 186)
+}
+.menu .createdAt{
+  border-right: 2px solid rgb(255, 217, 186)
+}
+
+.count{width: 11%;} .title{width: 65%} .createdAt{width: 12%;} .author{width: 12%;}
+
+.table{
+  width: 100%;
+  padding: 18px 0;
+  border-bottom: 1px solid rgb(255, 217, 186);
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .8s;
+  font-family: 'Pretendard-Regular',
+  sans-serif;
+  font-size: 16px;
+}
+.table:hover{
+  background-color: rgb(255, 234, 218);
+}
+.table .title{
+  text-align: left !important;
+  text-overflow: ellipsis;
+  /* line-height: 50px;
+  height: 50px; */
+  /* display: block; */
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 20px;
+  padding-left: 5px;
+}
+.table .createdAt{
+  color:rgba(255, 115, 0, 0.825)
+}
+.table .title{font-size: 18px;}
+
+.table:last-child{
+  border-bottom: 2px solid rgb(255, 155, 0)
+}
+
+.fixed{
+  background-color: rgb(255, 246, 241);
+}
+
+@media screen and (max-width: 668px) {
+  .count{width: 15%;} .title{width: 85%} .createdAt{display: hide;} .author{display: hide;}
+  .menu{
+    font-size: 10px;
+    padding: 6px 0;
+    display: flex;
+    margin-top: 7px;
+  }
+  .menu .title{
+    border:none;
+  }
+  
+  .table{
+    font-size: 12px;
+    padding: 9px 0;
+  }
+
+  .table .title{
+    font-size: 12px;
+    /* height: 40px; */
+    line-height: 13px;
+    text-overflow: none;
+    /* line-height: 50px;
+    height: 50px; */
+    /* display: block; */
+    overflow:unset;
+    white-space: normal;
+  }
+  .table .count{
+    border-right: 2px solid rgb(255, 217, 186)
+  }
+  .table .mobile{
+    font-size:9px;
+    padding-top: 2px;
+    color: #666;
+  }
+}

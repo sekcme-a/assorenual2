@@ -32,6 +32,11 @@
 .subMenu__title__container h3{
   font-size: 17px;
 }
+@media screen and (max-width: 1400px){
+  .subpage__container{
+    margin: 0 50px;
+  }
+}
 @media screen and (max-width: 1200px){
   .subpage__container{
     margin: 0 20px;
