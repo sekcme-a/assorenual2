@@ -11,6 +11,7 @@ import NavbarVerticle from "src/components/public/NavbarVerticle"
 import { MenuItems } from "src/data/menuItems"
 import LocNav from "src/components/public/LocNav"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
+import { saveAs } from 'file-saver'
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false,
@@ -98,7 +99,11 @@ const ShowArticle = () => {
           setHasPostFile(true)
       })
     }
-  },[postFilesData])
+  }, [postFilesData])
+  
+  const downloadFile = (url, name) => {
+    saveAs(url, name)
+  }
   
   return (
     <>
@@ -127,12 +132,11 @@ const ShowArticle = () => {
                   <div className={style.fileList}>
                     {postFilesData.map((data, index) => {
                       if (data.url !== undefined) {
+                        // if (data.url.includes(".jpg"))
                         return (
-                          <Link href={data.url}>
-                            <li key={index} className={style.fileName}>
+                            <li key={index} className={style.fileName} onClick={()=>downloadFile(data.url, data.name)}>
                               <h6>{data.name}</h6>
                             </li>
-                          </Link>
                         )
                       }
                     })}
