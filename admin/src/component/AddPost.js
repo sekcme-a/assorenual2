@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react"
 import dynamic from 'next/dynamic'
-import { MenuItems } from 'src/data/MenuItems'
 import { Router, useRouter } from "next/router"
 import { useLeavePageConfirm } from "src/hooks/useLeavePageConfirm"
-import { CompressImage } from "src/hooks/CompressImage"
+import { compressImage } from "src/hooks/compressImage"
 import CachedIcon from '@mui/icons-material/Cached';
 import { FileUpload } from "src/firebase/FileUpload"
 import { firestore as db } from "src/firebase/firebase"
@@ -71,7 +70,9 @@ const AddPost = (props) => {
   const { user, username, userrole } = useContext(UserContext);
 
   const onTitleChange = (e) => { setTitleText(e.target.value) }
-  const onAuthorChange = (e)=> {setAuthor(e.target.value)}
+  const onAuthorChange = (e) => { setAuthor(e.target.value) }
+  
+  useLeavePageConfirm()
 
   useEffect(() => {
     setAuthor(username)
@@ -116,7 +117,7 @@ const AddPost = (props) => {
     if (e.target.files[0] !== undefined) {
       if (checkIsImage(e.target.files[0].name)) {
         if (!checkIsImageSize(e.target.files[0].size)) {
-          CompressedFile = await CompressImage(e.target.files[0])
+          CompressedFile = await compressImage(e.target.files[0])
         } else {
           CompressedFile = e.target.files[0]
         }
