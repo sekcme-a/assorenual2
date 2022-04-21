@@ -1,3 +1,45 @@
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mainContainer {
+  width: 100%;
+  margin-top: 30px;
+  /* min-height: 100%; */
+  /* height: fit-content; */
+  height: 100%;
+  /* display: flex; */
+  padding-top: 10px;
+  /* justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start; */
+}
+.addPostContainer{
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  align-items: center;
+}
+.addPostButton{
+  margin-right: 40px;
+  background-color:rgb(255, 155, 0);
+  padding: 6px 14px;
+  border-radius: 3px;
+    font-family: 'NanumSquareRound',
+  sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+}
+.addPostButton:hover{
+  background-color: rgb(214, 129, 0);
+}
 .pagination{
   list-style: none;
   display: flex;

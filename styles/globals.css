@@ -166,3 +166,44 @@ table {
   padding: 15px 20px;
   border-radius: 3px;
 }
+  
+  .ql-hidden{
+    display:none;
+  }
+.ql-editor strong{
+     font-weight:bold;
+ }
+.ql-editor{
+  font-family:'Pretendard-Regular','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.ql-editor em{
+  font-style:italic;
+}
+.ql-editor blockquote{
+  border-left: 4px solid #ccc;
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
+  padding-left: 16px !important;
+}
+.ql-editor a{
+  text-decoration: underline;
+  color: #06c;
+}
+.ql-editor {line-height:20px; font-size: 18px}
+.ql-editor h1{font-size: 35px; line-height: 37px;}
+.ql-editor h2{font-size: 30px; line-height: 33px;}
+.ql-editor .ql-size-small{font-size: 14px; line-height: 15px}
+.ql-editor .ql-size-large{font-size: 23px; line-height: 25px}
+.ql-editor .ql-size-huge{font-size: 29px; line-height: 31px}
+.ql-editor iframe{width: 400px; height: 250px; margin: 10px}
+
+
+@media screen and (max-width: 480px){
+.ql-editor {line-height:16px; font-size: 14px}
+.ql-editor h1{font-size: 28px; line-height: 30px;}
+.ql-editor h2{font-size: 23px; line-height: 25px;}
+.ql-editor .ql-size-small{font-size: 10px; line-height: 12px}
+.ql-editor .ql-size-large{font-size: 18px; line-height: 20px}
+.ql-editor .ql-size-huge{font-size: 25px; line-height: 27px}
+.ql-editor iframe{width: 100%; height: 150px; margin: 7px 0 0 0}
+}

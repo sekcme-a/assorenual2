@@ -15,10 +15,10 @@ const HomeHeader = () => {
         <div className={styles.container}>
           
           <div className={styles.banner__text}>
-            <motion.h3 initial={{ opacity: 0, x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.0, delay: .5 } }}>국민의 건강과</motion.h3>
-            <motion.h3 initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.0, delay: 1.5 } }}>행복의 장을 여는</motion.h3>
-            <motion.h1 initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.8, delay: 2.7 } }}><p />대한생활체육회</motion.h1>
-            <motion.p initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.8, delay: 2.7 } }}>
+            <motion.h3 initial={{ opacity: 0, x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 0.8, delay: .5 } }}>국민의 건강과</motion.h3>
+            <motion.h3 initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 0.8, delay: 1.0 } }}>행복의 장을 여는</motion.h3>
+            <motion.h1 initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.3, delay: 1.5 } }}><p />대한생활체육회</motion.h1>
+            <motion.p initial={{ opacity: 0 , x: -15}} animate={{ opacity: 1, x: 0, transition: { duration: 1.3, delay: 2.0 } }}>
               Korea Sports For All Athletic Association
             </motion.p>
           </div>

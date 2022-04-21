@@ -10,9 +10,11 @@ const NoticeList = (props) => {
   const [listData, setListData] = useState([])
   const [mobileMode, setMobileMode] = useState("false")
   const [isLoading, setIsLoading] = useState(true)
+  const [fixedList, setFixedList] = useState([])
   let fetchedList;
   let prevList;
   let tempData = [];
+  let tempFixedData = [];
 
   // PC/모바일 환경에 따라 table style 바꾸기위함
   useEffect(() => {
@@ -28,7 +30,32 @@ const NoticeList = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setListData(tempData)
+      // setListData(tempData)
+      // setFixedList(tempData)
+      await db.collection("fixed").orderBy("createdAt", "desc").get().then(async (query) => {
+        query.forEach((doc) => {
+          if (db.collection(props.folderName).doc(doc.id)) {
+            db.collection(props.folderName).doc(doc.id).get().then((doc) => {
+              const d = new Date(doc.data().createdAt.toMillis())
+              const date = d.getFullYear() + "." + (d.getMonth() + 1) + "." + d.getDate()
+              tempFixedData = ([
+                ...tempFixedData,
+                {
+                  title: doc.data().title,
+                  uid: doc.data().uid,
+                  author: doc.data().author,
+                  createdAt: date,
+                  id: doc.id,
+                  count: doc.data().count,
+                  fixed: doc.data().fixed
+                }
+              ])
+              setFixedList(tempFixedData)
+            })
+          }
+        })
+      })
+      
       if (props.page === 1) {
         setTimeout(() => {
           fetchedList = (db.collection(props.folderName)
@@ -98,11 +125,10 @@ const NoticeList = (props) => {
     }
     fetchData();
   }, [props])
-  
-  const onMouseEnterTable = () => {
 
+  const onListClicked = (id) => {
+    props.getPostName(id)
   }
-
 
   return (
     <>
@@ -113,18 +139,22 @@ const NoticeList = (props) => {
             <h4 className={style.title}>제 목</h4>
           </div>
           <ul>
-            {listData.map((item, index) => {
+            {fixedList.map((item, index) => {
               return (
                 <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  {item.fixed ?
-                    <li className={`${style.table} ${style.fixed}`}>
-                      <p className={style.count}><CampaignIcon /></p>
+                  <li className={`${style.table} ${style.fixed}`}>
+                    <p className={style.count}><CampaignIcon /></p>
                       <h4 className={style.title}>
                         {item.title}
                         <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
                       </h4>
-                    </li>
-                    :
+                  </li>
+                </Link>
+              )
+            })}
+            {listData.map((item, index) => {
+              return (
+                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
                     <li className={style.table}>
                       <p className={style.count}>{item.count}</p>
                       <h4 className={style.title}>
@@ -132,7 +162,6 @@ const NoticeList = (props) => {
                         <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
                       </h4>
                     </li>
-                  }
                 </Link>
               )
             })}
@@ -147,31 +176,58 @@ const NoticeList = (props) => {
             <h4 className={style.author}>작성자</h4>
           </div>
           <ul className={style.list}>
-            {listData.map((item, index) => {
+            {props.mode === "admin" ? fixedList.map((item, index) => {
+              return (
+                <li key={index} className={`${style.table} ${style.fixed}`} onClick={() => onListClicked(item.id)}>
+                  <p className={style.count}><CampaignIcon /></p>
+                  <h4 className={style.title}>{item.title}</h4>
+                  <h4 className={style.createdAt}>{item.createdAt}</h4>
+                  <h4 className={style.author}>{item.author}</h4>
+                </li>
+              )
+            })
+            : fixedList.map((item, index) => {
               return (
                 <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  {item.fixed ?
-                    <li className={`${style.table} ${style.fixed}`}>
-                      <p className={style.count}><CampaignIcon /></p>
-                      <h4 className={style.title}>{item.title}</h4>
-                      <h4 className={style.createdAt}>{item.createdAt}</h4>
-                      <h4 className={style.author}>{item.author}</h4>
-                    </li>
-                    :
-                    <li className={style.table}>
-                      <p className={style.count}>{item.count}</p>
-                      <h4 className={style.title}>{item.title}</h4>
-                      <h4 className={style.createdAt}>{item.createdAt}</h4>
-                      <h4 className={style.author}>{item.author}</h4>
-                    </li>
-                  }
+                  <li className={`${style.table} ${style.fixed}`}>
+                    <p className={style.count}><CampaignIcon /></p>
+                    <h4 className={style.title}>{item.title}</h4>
+                    <h4 className={style.createdAt}>{item.createdAt}</h4>
+                    <h4 className={style.author}>{item.author}</h4>
+                  </li>
+                </Link>
+              )
+            })
+            
+            }
+            {props.mode === "admin" ?
+              listData.map((item, index) => {
+              return (
+                <li key={index} className={`${style.table} ${style.admin}`} onClick={()=>onListClicked(item.id)}>
+                  <p className={style.count}>{item.count}</p>
+                  <h4 className={style.title}>{item.title}</h4>
+                  <h4 className={style.createdAt}>{item.createdAt}</h4>
+                  <h4 className={style.author}>{item.author}</h4>
+                </li>
+              )
+            })
+              :
+              listData.map((item, index) => {
+              return (
+                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                  <li className={style.table}>
+                    <p className={style.count}>{item.count}</p>
+                    <h4 className={style.title}>{item.title}</h4>
+                    <h4 className={style.createdAt}>{item.createdAt}</h4>
+                    <h4 className={style.author}>{item.author}</h4>
+                  </li>
                 </Link>
               )
             })}
           </ul>
         </>
       }
-      <Pagination docName={props.folderName} page={props.page} />
+      {props.mode === "user" && <Pagination docName={props.folderName} page={props.page} />}
     </>
   )
 }

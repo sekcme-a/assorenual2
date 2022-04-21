@@ -9,19 +9,21 @@ import SetChart from "admin/src/component/SetCharts"
 import SetStatus from "admin/src/component/SetStatus"
 import SetLocation from "admin/src/component/SetLocation"
 import SetGroup from "admin/src/component/SetGroup"
+import PostList from "admin/src/component/PostList"
 import { adminMenuItems } from "src/data/adminMenuItems"
+import Loader from "src/components/public/Loader"
 
 const Admin = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { user, username, userrole } = useContext(UserContext);
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [userLevel, setUserLevel] = useState("")
   const [title, setTitle] = useState("")
-  
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (userrole === "admin")
-      setIsAdmin(true)
+    setUserLevel(userrole)
+    setIsLoading(false)
   }, [userrole])
   
   useEffect(() => {
@@ -33,39 +35,46 @@ const Admin = () => {
           setTitle(item.title)
       }
     })
-  },[slug])
+  }, [slug])
+  
+  const noAuthority = () => {
+    return (
+      <div className={style.notAdminContainer}>
+        <h2>관리자 권한이 없습니다.</h2>
+        <h3>관리자가 관리자 권한을 부여해야합니다.</h3>
+        <h4>권한을 부여해야하는 관리자명 : {`${username}`}</h4>
+      </div>
+    )
+  }
 
   return (
     <div className={style.adminBackground}>
       <div className={style.bg}>
-        {isAdmin ? (
+        {userLevel==="admin" || userLevel==="author" ? (
           <>
             <div className={style.navbarContainer}>
               <div className={style.navbarContainer2}>
-                <AdminNavbar />
+                <AdminNavbar userrole={userrole}/>
               </div>
             </div>
             <div className={style.contentContainer}>
               <div className={style.headerContainer}>
                 <p>{title}</p>
               </div>
-              {slug === "pageSetting1" && <SetGreet />}
-              {slug === "pageSetting2" && <SetPurpose />}
-              {slug === "pageSetting3" && <SetChart />}
-              {slug === "pageSetting4" && <SetStatus />}
-              {slug === "pageSetting5" && <SetLocation />}
-              {slug === "pageSetting6" && <SetGroup type="nation"/>}
-              {slug === "pageSetting7" && <SetGroup type="internation"/>}
-              {slug === "pageSetting8" && <SetGroup type="sports"/>}
-              {slug === "pageSetting9" && <SetGroup type="sanha"/>}
+              {slug === "pageSetting1" && userLevel==="admin" ? <SetGreet /> : noAuthority}
+              {slug === "pageSetting2" && userLevel==="admin" ? <SetPurpose /> : noAuthority}
+              {slug === "pageSetting3" && userLevel==="admin" ? <SetChart /> : noAuthority}
+              {slug === "pageSetting4" && userLevel==="admin" ? <SetStatus /> : noAuthority}
+              {slug === "pageSetting5" && userLevel==="admin" ? <SetLocation /> : noAuthority}
+              {slug === "pageSetting6" && userLevel==="admin" ? <SetGroup type="nation"/> : noAuthority}
+              {slug === "pageSetting7" && userLevel==="admin" ? <SetGroup type="internation"/> : noAuthority}
+              {slug === "pageSetting8" && userLevel==="admin" ? <SetGroup type="sports"/> : noAuthority}
+              {slug === "pageSetting9" && userLevel==="admin" ? <SetGroup type="sanha"/> : noAuthority}
+              {slug === "editanouncement" && <PostList folderName="anouncement" />}
             </div>
           </>
         ) : (
-          <div className={style.notAdminContainer}>
-            <h2>관리자 권한이 없습니다.</h2>
-            <h3>관리자가 관리자 권한을 부여해야합니다.</h3>
-            <h4>권한을 부여해야하는 관리자명 : {`${username}`}</h4>
-          </div>
+            <>{isLoading ? <Loader /> : noAuthority()}</>
         )
         }
       </div>

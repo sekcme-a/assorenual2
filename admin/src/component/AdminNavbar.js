@@ -3,14 +3,14 @@ import { adminMenuItems } from "src/data/adminMenuItems"
 import style from "admin/styles/adminNavbar.module.css"
 import Link from "next/link"
 import { auth } from "src/firebase/firebase";
-import Router from "next/router";
+import Router ,{useRouter} from "next/router";
 import ModeIcon from '@mui/icons-material/Mode';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const AdminNavbar = () => {
+const AdminNavbar = (props) => {
   const [clickedMain, setClickedMain] = useState("")
 
   const onLogoutClick = () => {
@@ -31,13 +31,21 @@ const AdminNavbar = () => {
     if (icon === "AdminPanelSettingsIcon")
       return <AdminPanelSettingsIcon className={style.icon}/>
   }
+
+  const router = useRouter()
+  const onItemClick = (url) => {
+    if(url===window.location.pathname)
+      router.reload(url)
+    else 
+      router.push(url)
+  }
   return (
     <div className={style.container}>
       <div className={style.logo}>
         대한생활체육회
       </div>
       <ul className={style.itemContainer}>
-        {adminMenuItems.map((item, index) => {
+        {props.userrole==="admin" && adminMenuItems.map((item, index) => {
           return (
             <>
               {(item.type === "main" && item.child === true) &&
@@ -53,8 +61,31 @@ const AdminNavbar = () => {
                 </Link>
               }
               {(item.type === "sub" && item.title===clickedMain) &&
+                <li className={style.subItem} key={index} onClick={()=>onItemClick(`/admin${item.path}`)}>
+                  {item.subtitle}
+                </li>
+              }
+            </>
+          )
+        })}
+        {props.userrole==="author" && adminMenuItems.map((item, index) => {
+          return (
+            <>
+              {(item.type === "main" && item.child === true && item.level==="author") &&
+                <li className={style.mainItem} onClick={() => onMainItemClick(item.title)} key={index}>
+                  {getIcon(item.icon)}<p>{item.title}</p>{item.title===clickedMain ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>}
+                </li>
+              }
+              {(item.type === "main" && item.child===false && item.level==="author")&&
                 <Link href={`/admin${item.path}`} >
-                  <li className={style.subItem} key={index}>
+                  <li className={style.mainItem} onClick={() => onMainItemClick(item.title)} key={index}>
+                    {getIcon(item.icon)}<p>{item.title}</p>
+                  </li>
+                </Link>
+              }
+              {(item.type === "sub" && item.title===clickedMain && item.level==="author") &&
+                <Link href={`/admin${item.path}`} >
+                  <li className={style.subItem} key={index} >
                     {item.subtitle}
                   </li>
                 </Link>

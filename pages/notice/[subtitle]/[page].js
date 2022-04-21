@@ -50,7 +50,7 @@ const Info = () => {
         <div className="content__container">
           <SubMenuTitle title={`${subtitle}`} subtitle={`대한생활체육회의 ${subtitle} 전해드립니다.`}/>
           {slug.subtitle === "photo" ? <></> : 
-            cusSlug && <NoticeList folderName={slug.subtitle} page={parseInt(slug.page)} />
+            cusSlug && <NoticeList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} />
           }
         </div>
       </div>

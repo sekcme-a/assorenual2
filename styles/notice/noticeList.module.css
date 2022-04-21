@@ -65,6 +65,10 @@
   background-color: rgb(255, 246, 241);
 }
 
+.admin{
+  background-color: rgb(251, 251, 251);
+}
+
 @media screen and (max-width: 668px) {
   .count{width: 15%;} .title{width: 85%} .createdAt{display: hide;} .author{display: hide;}
   .menu{

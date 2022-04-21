@@ -18,6 +18,7 @@ import NavbarMobile from "src/components/public/NavbarMobile"
 import { UserContext } from "src/data/context"
 import { useUserData } from "src/firebase/useUserData"
 import Script from "next/script"
+// import 'react-quill/dist/quill.snow.css'
 
 function MyApp({ Component, pageProps }) {
   const [mobileMode, setMobileMode] = useState("false")

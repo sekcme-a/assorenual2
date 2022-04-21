@@ -8,17 +8,21 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 const Pagination = (props) => {
   const [pageList, setPageList] = useState([])
   const [warpPage, setWarpPage] = useState([])
+  const [gotoPage, setGotoPage] = useState()
+  const [lastPage, setLastPage] = useState()
   useEffect(async() => {
     let firstPage;
     let endPage
     let tempPageList = []
-    let tempWarpPage=[]
+    let tempWarpPage = []
+    setGotoPage(props.page)
     await db.collection('postCount').doc(props.docName).get().then((doc) => {
       let pageCount;
       if (doc.data().count % 9 !== 0)
-        pageCount = doc.data().count/9 + 1
+        pageCount = Math.floor(doc.data().count/9) + 1
       else
-        pageCount = doc.data().count / 9
+        pageCount = Math.floor(doc.data().count / 9)
+      setLastPage(pageCount)
       if (props.page < 4 && pageCount<=7) {
         firstPage = 1
         endPage = pageCount
@@ -51,34 +55,52 @@ const Pagination = (props) => {
       setPageList(tempPageList)
       setWarpPage(tempWarpPage)
     })
-  },[props])
+  }, [props])
+  
+  const onGotoPageChange = (event) => {
+    if (event.target.value > lastPage)
+    {
+      alert(`${lastPage}가 마지막 페이지입니다.`)
+      setGotoPage(lastPage)
+    }
+    else
+      setGotoPage(event.target.value)
+  }
   return (
-    <ul className={style.pagination}>
-      {warpPage && (warpPage[0] !== 0 &&
-        <Link href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${warpPage[0]}`}>
-          <li className={style.page}><ArrowLeftIcon /></li>
+    <>
+      <ul className={style.pagination}>
+        {warpPage && (warpPage[0] !== 0 &&
+          <Link href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${warpPage[0]}`}>
+            <li className={style.page}><ArrowLeftIcon /></li>
+          </Link>
+        )}
+        {pageList.map((page, index) => {
+          return (
+            <>
+              {
+                page === props.page ? (
+                  <li key={index} className={`${style.currentPage} ${style.page}`}>{page}</li>
+                ):(
+                <Link key={index} href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${page}`}>
+                  <li className={style.page}>{page}</li>
+                </Link>
+              )}
+            </>
+          )
+        })}
+        {warpPage && (warpPage[1] !== 0 &&
+          <Link href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${warpPage[1]}`}>
+            <li className={style.page}><ArrowRightIcon /></li>
+          </Link>
+        )}
+      </ul>
+      <div className={style.gotoContainer}>
+        <input className={style.input} type="text" id="name" size="1" value={gotoPage} onChange={onGotoPageChange} /><p>/{lastPage}페이지</p>
+        <Link href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${gotoPage}`}>
+          <div className={style.button}>이동</div>
         </Link>
-      )}
-      {pageList.map((page, index) => {
-        return (
-          <>
-            {
-              page === props.page ? (
-                <li key={index} className={`${style.currentPage} ${style.page}`}>{page}</li>
-              ):(
-              <Link key={index} href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${page}`}>
-                <li className={style.page}>{page}</li>
-              </Link>
-            )}
-          </>
-        )
-      })}
-      {warpPage && (warpPage[1] !== 0 &&
-        <Link href='/notice/[filename]/[page]' as={`/notice/${props.docName}/${warpPage[1]}`}>
-          <li className={style.page}><ArrowRightIcon /></li>
-        </Link>
-      )}
-    </ul>
+      </div>
+    </>
   )
 }
 
