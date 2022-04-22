@@ -91,6 +91,7 @@ const AddPost = (props) => {
           setUid(doc.data().uid)
           setCount(doc.data().count)
           setFixed(doc.data().fixed)
+          console.log(fixed)
           tempTextData = doc.data().post
           if (doc.data().files !== "") {
             tempString = doc.data().files
@@ -428,7 +429,7 @@ const AddPost = (props) => {
       </div>
       {props.folderName !== "photo" &&
         <div className={`${style.container} ${style.container2}`}>
-          <h4>상단고정</h4><input onChange={onCheckboxChange} type="checkbox"></input>
+          <h4>상단고정</h4><input onChange={onCheckboxChange} type="checkbox" checked={fixed}></input>
         </div>
       }
       <div className={`${style.container} ${style.container1}`}>

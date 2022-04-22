@@ -60,6 +60,16 @@
 .banner__btn {
   margin-top: 35px;
 }
+@media (max-width: 1300px){
+  .banner__text {
+    margin-left: 120px;
+  }
+}
+@media (max-width: 1200px){
+  .banner__text {
+    margin-left: 60px;
+  }
+}
 
 @media (max-width: 900px){
   .banner{

@@ -13,7 +13,7 @@ import 'styles/lazyItem.css'
 import Navbar from "src/components/public/Navbar"
 import Footer from "src/components/public/Footer"
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import react, { useState, useEffect } from "react"
 import NavbarMobile from "src/components/public/NavbarMobile"
 import { UserContext } from "src/data/context"
 import { useUserData } from "src/firebase/useUserData"

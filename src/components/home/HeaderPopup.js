@@ -11,6 +11,18 @@ const HeaderPopup = () => {
   const [linkList, setLinkList] = useState([])
   const [count, setCount] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [mobileMode, setMobileMode] = useState("false")
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 870)
+        setMobileMode(true)
+      else
+        setMobileMode(false)
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, [])
 
   useEffect(() => {
     const fetchUrl = async () => {
@@ -46,21 +58,25 @@ const HeaderPopup = () => {
   }
   
   return (
-    <div className={style.container}>
-      {linkList[count] === "-" || linkList[count] === undefined ?
-        <img className={style.img} src={urlList[count]} alt="adsf" />
-        :
-        <Link href={linkList[count]}>
+    <>
+      {mobileMode===false &&
+      <div className={style.container}>
+        {linkList[count] === "-" || linkList[count] === undefined ?
           <img className={style.img} src={urlList[count]} alt="adsf" />
-        </Link>
+          :
+          <Link href={linkList[count]}>
+            <img className={style.img} src={urlList[count]} alt="adsf" />
+          </Link>
+        }
+        {isLoading === false &&
+          <div className={style.buttonContainer}>
+            <ArrowLeftIcon className={style.button} onClick={onLeftButtonClick} />
+            <ArrowRightIcon className={style.button} onClick={onRightButtonClick} />
+          </div>
+        }
+      </div >
       }
-      {isLoading === false &&
-        <div className={style.buttonContainer}>
-          <ArrowLeftIcon className={style.button} onClick={onLeftButtonClick} />
-          <ArrowRightIcon className={style.button} onClick={onRightButtonClick} />
-        </div>
-      }
-    </div>
+    </>
   )
 }
 export default HeaderPopup;

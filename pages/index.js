@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import HomeHeader from "src/components/home/HomeHeader"
 import HeaderPopup from "src/components/home/HeaderPopup"
+import Article from "src/components/home/Article"
 import About from "src/components/home/About"
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <HomeHeader />
       <HeaderPopup />
+      <Article />
       <About />
     </div>
   )
