@@ -15,6 +15,14 @@ export const adminMenuItems = [
     level: "admin",
   },
   {
+    type: "sub",
+    title: '메인페이지 관리',
+    child: false,
+    subtitle: '중간영상 관리',
+    path: '/mainVideo',
+    level: "admin",
+  },
+  {
     type: "main",
     title: '체육회소개 관리',
     child: true,

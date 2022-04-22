@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'SUIT-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mainContainer{
+  width: 100%;
+  margin-top: 50px;
+  /* min-height: 100%; */
+  /* height: fit-content; */
+  height: 100%;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.warning{
+  color: red !important;
+  font-size: 12px !important;
+}
+
+.container{
+  background-color: white;
+  width: 100%;
+  margin: 10px 50px;
+  box-shadow: 1px 1px 2px #333;
+  border: 1px solid rgb(206, 206, 206);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 2px 15px;
+  font-family: "SUIT-Medium",
+  sans-serif;
+  border-radius: 3px;
+}
+.container h4{
+  width: 100%;
+  font-size: 17px;
+  padding: 5px 0;
+}
+.container p{
+  width: 100%;
+  color: #555;
+  padding: 2px 0 2px 12px;
+}
+
+.button{
+  background-color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid black;
+  margin-right: 10px;
+  padding: 3px 5px;
+  cursor: pointer;
+  transition: .5s;
+}
+.button:hover{
+  background-color: rgb(218, 218, 218);
+}
+.button2{
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid black;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: .5s;
+}
+.button2:hover{
+  background-color: rgb(218,218,218);
+}
+
+
+
+
+.container1{
+  height: 80px;
+}
+.container3{
+  /* height: 600px; */
+}

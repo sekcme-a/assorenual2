@@ -198,6 +198,7 @@ table {
 .ql-editor iframe{width: 400px; height: 250px; margin: 10px}
 
 
+
 @media screen and (max-width: 480px){
 .ql-editor {line-height:16px; font-size: 14px}
 .ql-editor h1{font-size: 28px; line-height: 30px;}

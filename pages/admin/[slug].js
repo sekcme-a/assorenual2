@@ -4,6 +4,7 @@ import { UserContext } from "src/data/context";
 import AdminNavbar from "admin/src/component/AdminNavbar"
 import style from "admin/styles/home.module.css"
 import SetMainPopup from "admin/src/component/SetMainPopup"
+import SetMainVideo from "admin/src/component/SetMainVideo"
 import SetGreet from "admin/src/component/SetGreet"
 import SetPurpose from "admin/src/component/SetPurpose"
 import SetChart from "admin/src/component/SetCharts"
@@ -63,6 +64,7 @@ const Admin = () => {
                 <p>{title}</p>
               </div>
               {slug === "mainPopup" && userLevel==="admin" ? <SetMainPopup /> : noAuthority}
+              {slug === "mainVideo" && userLevel==="admin" ? <SetMainVideo /> : noAuthority}
               {slug === "pageSetting1" && userLevel==="admin" ? <SetGreet /> : noAuthority}
               {slug === "pageSetting2" && userLevel==="admin" ? <SetPurpose /> : noAuthority}
               {slug === "pageSetting3" && userLevel==="admin" ? <SetChart /> : noAuthority}

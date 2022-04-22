@@ -38,7 +38,15 @@ const NoticeList = (props) => {
             db.collection(props.folderName).doc(doc.id).get().then((doc) => {
               if (doc.data()) {
                 const d = new Date(doc.data().createdAt.toMillis())
-                const date = d.getFullYear() + "." + (d.getMonth() + 1) + "." + d.getDate()
+                let date;
+                if(d.getMonth()+1<10 && d.getDate()<10)
+                  date = d.getFullYear() + ".0" + (d.getMonth() + 1) + ".0" + d.getDate()
+                else if(d.getMonth()+1<10 && d.getDate()>=10)
+                  date = d.getFullYear() + ".0" + (d.getMonth() + 1) + "." + d.getDate()
+                else if(d.getMonth()+1>=10 && d.getDate()<10)
+                  date = d.getFullYear() + "." + (d.getMonth() + 1) + ".0" + d.getDate()
+                else if(d.getMonth()+1>=10 && d.getDate()>=10)
+                  date = d.getFullYear() + "." + (d.getMonth() + 1) + "." + d.getDate()
                 tempFixedData = ([
                   ...tempFixedData,
                   {

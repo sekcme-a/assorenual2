@@ -62,10 +62,10 @@ const HeaderPopup = () => {
       {mobileMode===false &&
       <div className={style.container}>
         {linkList[count] === "-" || linkList[count] === undefined ?
-          <img className={style.img} src={urlList[count]} alt="adsf" />
+          <img className={style.img} src={urlList[count]} alt={urlList[count]} />
           :
           <Link href={linkList[count]}>
-            <img className={style.img} src={urlList[count]} alt="adsf" />
+            <img className={style.img} src={urlList[count]} alt={urlList[count]} />
           </Link>
         }
         {isLoading === false &&
