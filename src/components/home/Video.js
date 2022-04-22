@@ -17,7 +17,7 @@ const Video = () => {
     const fetchData = async () => {
       await db.collection("setting").doc("mainVideo").get().then((doc) => {
         setFetchedUrl(doc.data().url)
-        setUrl(fetchedUrl)
+        setUrl(doc.data().url)
       })
     }
     fetchData();
