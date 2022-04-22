@@ -75,6 +75,7 @@
   background-color: white;
   box-shadow: 0px 0px 2px #000;
   margin-left: 3px;
+  z-index: 999999999 !important;
 }
 .headerContainer p{
   font-family: "SUIT-Medium", sans-serif;

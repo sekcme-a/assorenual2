@@ -6,6 +6,7 @@ import Pagination from "src/components/notice/Pagination"
 import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
 import NoticeList from "src/components/notice/NoticeList"
+import PhotoList from "src/components/notice/PhotoList"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AddPost from "admin/src/component/AddPost"
@@ -28,10 +29,10 @@ const PostList = (props) => {
       let tempWarpPage = []
       await db.collection('postCount').doc(props.folderName).get().then((doc) => {
         let pageCount;
-        if (doc.data().count % 9 !== 0)
-          pageCount = Math.floor(doc.data().count/9 + 1)
+        if (doc.data().count % props.postPerPage !== 0)
+          pageCount = Math.floor(doc.data().count/props.postPerPage + 1)
         else
-          pageCount = Math.floor(doc.data().count / 9)
+          pageCount = Math.floor(doc.data().count / props.postPerPage)
         if (currentPage < 4 && pageCount<=7) {
           firstPage = 1
           endPage = pageCount
@@ -98,7 +99,11 @@ const PostList = (props) => {
           <div className={style.addPostContainer}>
             <div className={style.addPostButton} onClick={onAddPostButtonClick}>글 작성</div>
           </div>
-          <NoticeList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn)=>setSelectedPost(pn)}/>
+          {props.folderName === "photo" ?
+            <PhotoList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
+            :
+            <NoticeList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
+          }
           <ul className={style.pagination}>
             {warpPage && (warpPage[0] !== 0 &&
               <li className={style.page} onClick={() => setCurrentPage(warpPage[0])}><ArrowLeftIcon /></li>

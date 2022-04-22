@@ -93,23 +93,24 @@
 }
 
 .statusContainer .card .box .content .idPhotoContainer {
-  width: 30%;
+  width: 80px;
   height: 130px;
+  margin: 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .statusContainer .card .box .content .idTextContainer {
-  height: 130px;
-  width: 70%;
+  height: inherit;
+  /* width: 70%; */
   padding-left: 10px;
   cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
-.statusContainer .card .box .content .idTextContainer h6:first-child {
-  margin-top: 10px;
-}
 
 .statusContainer .card .box .content .idTextContainer h6 {
   font-size: 14px;
@@ -120,6 +121,8 @@
   transition: .5s;
   line-height: 16px;
   font-weight: bold;
+  width: 100%;
+  margin: 2px 0;
 }
 
 .statusContainer .card:hover .box .content .idTextContainer h6 {
@@ -159,19 +162,34 @@
     height: 130px;
   }
   .statusContainer .card .box .content .idPhotoContainer{
-    margin-top: -10px;
+    margin: 0 0 0 5px;
+    height: inherit;
+
   }
   .statusContainer .card .box .content .idPhotoContainer .idPhoto {
-    width: 60px;
-    height: 88px;
+    /* width: 80px;
+    height: 90px; */
+    border: none;
+    background-color: transparent;  
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
   }
   .statusContainer .position {
     font-size: 16px;
+  }
+  .statusContainer .card .box .content{
+    height: 100px;
+  }
+  .statusContainer .card .box .content .idTextContainer{
+    margin-left: -10px;
   }
   .statusContainer .card .box .content .idTextContainer h6 {
     font-size: 13px;
     line-height: 14px;
     word-break: keep-all;
     font-weight: 500;
+    margin: 0;
   }
 }

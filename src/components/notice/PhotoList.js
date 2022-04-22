@@ -1,16 +1,15 @@
 import React, { useEffect, useState} from "react"
 import { firestore as db } from "src/firebase/firebase"
 import Link from "next/link"
-import style from "styles/notice/noticeList.module.css"
+import style from "styles/notice/photoList.module.css"
 import Pagination from "src/components/notice/Pagination"
 import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
 
-const NoticeList = (props) => {
+const PhotoList = (props) => {
   const [listData, setListData] = useState([])
   const [mobileMode, setMobileMode] = useState("false")
   const [isLoading, setIsLoading] = useState(true)
-  const [fixedList, setFixedList] = useState([])
   let fetchedList;
   let prevList;
   let tempData = [];
@@ -32,37 +31,12 @@ const NoticeList = (props) => {
     const fetchData = async () => {
       // setListData(tempData)
       // setFixedList(tempData)
-      await db.collection("fixed").orderBy("createdAt", "desc").get().then(async (query) => {
-        query.forEach((doc) => {
-          if (db.collection(props.folderName).doc(doc.id)) {
-            db.collection(props.folderName).doc(doc.id).get().then((doc) => {
-              if (doc.data()) {
-                const d = new Date(doc.data().createdAt.toMillis())
-                const date = d.getFullYear() + "." + (d.getMonth() + 1) + "." + d.getDate()
-                tempFixedData = ([
-                  ...tempFixedData,
-                  {
-                    title: doc.data().title,
-                    uid: doc.data().uid,
-                    author: doc.data().author,
-                    createdAt: date,
-                    id: doc.id,
-                    count: doc.data().count,
-                    fixed: doc.data().fixed
-                  }
-                ])
-                setFixedList(tempFixedData)
-              }
-            })
-          }
-        })
-      })
       
       if (props.page === 1) {
         setTimeout(() => {
           fetchedList = (db.collection(props.folderName)
             .orderBy("createdAt", "desc")
-            .limit(9))
+            .limit(16))
           if (fetchedList !== undefined) {
             fetchedList.get().then((data) => {
               data.forEach((doc) => {
@@ -85,7 +59,7 @@ const NoticeList = (props) => {
                     createdAt: date,
                     id: doc.id,
                     count: doc.data().count,
-                    fixed: doc.data().fixed
+                    thumbnail: doc.data().thumbnail
                   }
                 ])
               })
@@ -98,7 +72,7 @@ const NoticeList = (props) => {
       else if (props.page !== 1) {
         prevList = (db.collection(props.folderName)
           .orderBy("createdAt", "desc")
-          .limit(9 * (props.page - 1)))
+          .limit(16 * (props.page - 1)))
         
         await prevList.get().then(async (snap) => {
           let lastVis = snap.docs[snap.docs.length - 1]
@@ -106,7 +80,7 @@ const NoticeList = (props) => {
             fetchedList = db.collection(props.folderName)
               .orderBy("createdAt", "desc")
               .startAfter(lastVis)
-              .limit(9)
+              .limit(16)
           }
         })
         if (fetchedList !== undefined) {
@@ -131,7 +105,7 @@ const NoticeList = (props) => {
                   createdAt: date,
                   id: doc.id,
                   count: doc.data().count,
-                  fixed: doc.data().fixed
+                  thumbnail: doc.data().thumbnail
                 }
               ])
             })
@@ -152,34 +126,21 @@ const NoticeList = (props) => {
     <>
       {isLoading ? <Loader /> : mobileMode ?
         <>
-          <div className={style.menu}>
-            <h4 className={style.count}>번호</h4>
-            <h4 className={style.title}>제 목</h4>
-          </div>
-          <ul>
-            {fixedList.map((item, index) => {
-              return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  <li className={`${style.table} ${style.fixed}`}>
-                    <p className={style.count}><CampaignIcon /></p>
-                      <h4 className={style.title}>
-                        {item.title}
-                        <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
-                      </h4>
-                  </li>
-                </Link>
-              )
-            })}
+          <ul className={style.list}>
             {listData.map((item, index) => {
               return (
                 <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                    <li className={style.table}>
-                      <p className={style.count}>{item.count}</p>
-                      <h4 className={style.title}>
-                        {item.title}
-                        <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
-                      </h4>
-                    </li>
+                  <li className={style.imgTable}>
+                    {item.thumbnail && (
+                      <div className={style.imgContainer}>
+                        <img src={item.thumbnail} alt={item.title}/>
+                      </div>
+                    )}
+                    <div className={style.textContainer}>
+                      <div className={style.imgTitle}>{item.title}</div>
+                      <div className={style.imgCreatedAt}>{item.createdAt}</div>
+                    </div>
+                  </li>
                 </Link>
               )
             })}
@@ -187,57 +148,37 @@ const NoticeList = (props) => {
         </>
         :
         <>
-          <div className={style.menu}>
-            <h4 className={style.count}>번호</h4>
-            <h4 className={style.title}>제 목</h4>
-            <h4 className={style.createdAt}>등록일</h4>
-            <h4 className={style.author}>작성자</h4>
-          </div>
           <ul className={style.list}>
-            {props.mode === "admin" ? fixedList.map((item, index) => {
-              return (
-                <li key={index} className={`${style.table} ${style.fixed}`} onClick={() => onListClicked(item.id)}>
-                  <p className={style.count}><CampaignIcon /></p>
-                  <h4 className={style.title}>{item.title}</h4>
-                  <h4 className={style.createdAt}>{item.createdAt}</h4>
-                  <h4 className={style.author}>{item.author}</h4>
-                </li>
-              )
-            })
-            : fixedList.map((item, index) => {
-              return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  <li className={`${style.table} ${style.fixed}`}>
-                    <p className={style.count}><CampaignIcon /></p>
-                    <h4 className={style.title}>{item.title}</h4>
-                    <h4 className={style.createdAt}>{item.createdAt}</h4>
-                    <h4 className={style.author}>{item.author}</h4>
-                  </li>
-                </Link>
-              )
-            })
-            
-            }
             {props.mode === "admin" ?
               listData.map((item, index) => {
               return (
-                <li key={index} className={`${style.table} ${style.admin}`} onClick={()=>onListClicked(item.id)}>
-                  <p className={style.count}>{item.count}</p>
-                  <h4 className={style.title}>{item.title}</h4>
-                  <h4 className={style.createdAt}>{item.createdAt}</h4>
-                  <h4 className={style.author}>{item.author}</h4>
-                </li>
+                  <li className={style.imgTable} onClick={()=>onListClicked(item.id)}>
+                    {item.thumbnail && (
+                      <div className={style.imgContainer}>
+                        <img src={item.thumbnail} alt={item.title}/>
+                      </div>
+                    )}
+                    <div className={style.textContainer}>
+                      <div className={style.imgTitle}>{item.title}</div>
+                      <div className={style.imgCreatedAt}>{item.createdAt}</div>
+                    </div>
+                  </li>
               )
             })
               :
               listData.map((item, index) => {
               return (
                 <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  <li className={style.table}>
-                    <p className={style.count}>{item.count}</p>
-                    <h4 className={style.title}>{item.title}</h4>
-                    <h4 className={style.createdAt}>{item.createdAt}</h4>
-                    <h4 className={style.author}>{item.author}</h4>
+                  <li className={style.imgTable}>
+                    {item.thumbnail && (
+                      <div className={style.imgContainer}>
+                        <img src={item.thumbnail} alt={item.title}/>
+                      </div>
+                    )}
+                    <div className={style.textContainer}>
+                      <div className={style.imgTitle}>{item.title}</div>
+                      <div className={style.imgCreatedAt}>{item.createdAt}</div>
+                    </div>
                   </li>
                 </Link>
               )
@@ -245,10 +186,10 @@ const NoticeList = (props) => {
           </ul>
         </>
       }
-      {listData.length === 0 && isLoading===false && <h4 className={style.noPostInfo}>아직 게시물이 없습니다.</h4>}
-      {props.mode === "user" && isLoading === false && <Pagination docName={props.folderName} page={props.page} postPerPage={9} />}
+      {listData.length === 0 && isLoading=== false && <h4 className={style.noPostInfo}>아직 게시물이 없습니다.</h4>}
+      {props.mode === "user" && isLoading === false && <Pagination docName={props.folderName} page={props.page} postPerPage={16}/>}
     </>
   )
 }
 
-export default NoticeList;
+export default PhotoList;

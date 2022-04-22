@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { UserContext } from "src/data/context";
 import AdminNavbar from "admin/src/component/AdminNavbar"
 import style from "admin/styles/home.module.css"
+import SetMainPopup from "admin/src/component/SetMainPopup"
 import SetGreet from "admin/src/component/SetGreet"
 import SetPurpose from "admin/src/component/SetPurpose"
 import SetChart from "admin/src/component/SetCharts"
@@ -61,6 +62,7 @@ const Admin = () => {
               <div className={style.headerContainer}>
                 <p>{title}</p>
               </div>
+              {slug === "mainPopup" && userLevel==="admin" ? <SetMainPopup /> : noAuthority}
               {slug === "pageSetting1" && userLevel==="admin" ? <SetGreet /> : noAuthority}
               {slug === "pageSetting2" && userLevel==="admin" ? <SetPurpose /> : noAuthority}
               {slug === "pageSetting3" && userLevel==="admin" ? <SetChart /> : noAuthority}
@@ -70,7 +72,12 @@ const Admin = () => {
               {slug === "pageSetting7" && userLevel==="admin" ? <SetGroup type="internation"/> : noAuthority}
               {slug === "pageSetting8" && userLevel==="admin" ? <SetGroup type="sports"/> : noAuthority}
               {slug === "pageSetting9" && userLevel==="admin" ? <SetGroup type="sanha"/> : noAuthority}
-              {slug === "editanouncement" && <PostList folderName="anouncement" />}
+              {slug === "editanouncement" && <PostList folderName="anouncement" postPerPage={9}/>}
+              {slug === "editphoto" && <PostList folderName="photo" postPerPage={16}/>}
+              {slug === "editreference" && <PostList folderName="reference" postPerPage={9}/>}
+              {slug === "editresult" && <PostList folderName="result" postPerPage={9}/>}
+              {slug === "editschedule" && <PostList folderName="schedule" postPerPage={9} />}
+              {slug === "editmedia" && <PostList folderName="media" postPerPage={9} />}
             </div>
           </>
         ) : (

@@ -69,7 +69,15 @@
   background-color: rgb(251, 251, 251);
 }
 
+.noPostInfo{
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
 @media screen and (max-width: 668px) {
+  .noPostInfo{font-size: 10px;}
   .count{width: 15%;} .title{width: 85%} .createdAt{display: hide;} .author{display: hide;}
   .menu{
     font-size: 10px;

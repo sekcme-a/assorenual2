@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'SUIT-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mainContainer{
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+  /* min-height: 100%; */
+  /* height: fit-content; */
+  height: 100%;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.warning{
+  color: red !important;
+  font-size: 12px !important;
+}
+
+.container{
+  background-color: white;
+  width: 100% !important;
+  margin: 10px 50px !important;
+  box-shadow: 1px 1px 2px #333;
+  border: 1px solid rgb(206, 206, 206);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 2px 15px;
+  font-family: "SUIT-Medium",
+  sans-serif;
+  border-radius: 3px;
+}
+.container h4{
+  width: 100%;
+  font-size: 17px;
+  padding: 5px 0;
+}
+.container p{
+  width: 100%;
+  color: #555;
+  padding: 2px 0 2px 12px;
+}
+
+
+.addFile{
+  height: fit-content;
+}
+.files{
+  display: inline-block;
+  border: 1px solid black;
+  padding: 2px 5px !important;
+  border-radius: 3px;
+  margin-top: 3px;
+  background-color: rgb(247, 247, 247);
+  font-size: 14px !important;
+}
+.fileDelete{
+  display: inline-block;
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: red;
+  padding: 3px 5px !important;
+  color: white;
+  border-radius: 2px;
+  border: .2px solid black;
+  font-size: 8px !important;
+  width: fit-content !important;
+
+}
+
+.deleteButton{
+    background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 3px 7px;
+  border-radius: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-right: 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.submitButton{
+  background-color: rgb(255, 177, 59);
+  color: black;
+  padding: 3px 7px;
+  border-radius: 3px;
+  font-weight: bold !important;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+
+.container1{
+  height: 60px;
+}
+.container2{
+  height: 30px;
+}
+.container2 h4{
+  width: fit-content;
+  margin-right: 15px;
+}
+.container3{
+  height: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.quillContainer{
+  min-height: 150px;
+  height: fit-content;
+  align-content: flex-start;
+}
+.quillContainer .quill{
+  width: 100%;
+}
+.previewContainer{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+h4.preview{
+  width: fit-content;
+}
+.reload{
+  width: fit-content;
+}
+
+.blank{
+  height: 60px;
+  width: 100%;
+}

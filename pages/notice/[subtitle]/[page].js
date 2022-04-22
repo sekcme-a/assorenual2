@@ -6,6 +6,7 @@ import { MenuItems } from "src/data/menuItems"
 import LocNav from "src/components/public/LocNav"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
 import NoticeList from "src/components/notice/NoticeList"
+import PhotoList from "src/components/notice/PhotoList"
 
 
 const Info = () => {
@@ -49,7 +50,7 @@ const Info = () => {
         <NavbarVerticle loc={title}/>
         <div className="content__container">
           <SubMenuTitle title={`${subtitle}`} subtitle={`대한생활체육회의 ${subtitle} 전해드립니다.`}/>
-          {slug.subtitle === "photo" ? <></> : 
+          {slug.subtitle === "photo" ? cusSlug && <PhotoList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} /> : 
             cusSlug && <NoticeList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} />
           }
         </div>

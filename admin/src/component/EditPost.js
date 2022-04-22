@@ -426,14 +426,16 @@ const AddPost = (props) => {
         <h4>제목</h4>
         <p>제목 문구 : <input type="text" value={titleText} onChange={onTitleChange} size="60" required/></p>
       </div>
-      <div className={`${style.container} ${style.container2}`}>
-        <p>상단고정</p><input onChange={onCheckboxChange} type="checkbox" checked={fixed}></input>
-      </div>
+      {props.folderName !== "photo" &&
+        <div className={`${style.container} ${style.container2}`}>
+          <h4>상단고정</h4><input onChange={onCheckboxChange} type="checkbox"></input>
+        </div>
+      }
       <div className={`${style.container} ${style.container1}`}>
         <h4>작성자</h4>
         <p>작성자 : <input type="text" value={author} onChange={onAuthorChange} size="60" required/></p>
       </div>
-        <div className={style.addFile}>첨부파일 : <input type="file" name="selectedFile[]" onChange={onFileChange} /></div>
+        <div className={`${style.container} ${style.addFile}`}>첨부파일 : <input type="file" name="selectedFile[]" onChange={onFileChange} />
           {prevFileList && prevFileList.map((item, index) => {
             if (item !== undefined) {
               return (
@@ -448,22 +450,29 @@ const AddPost = (props) => {
               )
             }
           })}
-        <div className={`${style.container} ${style.container1}`}>
+        </div>
+        <div className={`${style.container} ${style.container3}`}>
         <h4>이미지 추가</h4>
         <p className={style.warning}>*이미지의 크기가 2MB보다 클 경우 자동으로 압축됩니다.</p>
         <p>이미지 선택 : <input type="file" name="selectedImg[]" onChange={onImgChange} accept="image/*"/></p>
-        <textarea name="imgURL" value={imgHTML}cols="60" rows="10" readOnly ></textarea><br/>
+        <textarea name="imgURL" value={imgHTML}cols="60" rows="5" readOnly ></textarea><br/>
       </div>
-      
-      <QuillNoSSRWrapper onChange={onChange} modules={modules} formats={formats} value={textData} theme="snow" />
+      <div className={`${style.quillContainer} ${style.container}`}>
+        <QuillNoSSRWrapper className={style.quill} onChange={onChange} modules={modules} formats={formats} value={textData} theme="snow" />
+      </div>
       {/* <Link href="/info/greetPreview"><a className={style.button} target="_blank" onClick={onPreviewClick}>미리보기</a></Link>
       <input type="submit" onClick={onSubmitClick} className={style.button2} value="적용"></input> */}
         <h4 className={style.deleteButton} onClick={onDeleteClick}>삭제</h4>
         <input className={style.submitButton} type="submit" value="업로드" onClick={onSubmit}></input>
-        <h4 className={style.preview}>미리보기</h4>
-        <div className={style.reload} onClick={() => { onPreviewClick() }}><CachedIcon /></div>
-        <QuillNoSSRWrapper value={post} readOnly={true} theme="bubble" />
+        <div className={`${style.quillContainer} ${style.container}`}>
+          <div className={style.previewContainer}>
+            <h4 className={style.preview}>미리보기</h4>
+            <div className={style.reload} onClick={() => { onPreviewClick() }}><CachedIcon /></div>
+          </div>
+          <QuillNoSSRWrapper value={post} readOnly={true} theme="bubble" />
+        </div>
       {/* <input type="submit" onClick={onSubmitClick} className={style.button2} value="적용"></input> */}
+      <div className={style.blank}></div>
     </form>
   )
 }

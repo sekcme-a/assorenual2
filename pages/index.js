@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import HomeHeader from "src/components/home/HomeHeader"
+import HeaderPopup from "src/components/home/HeaderPopup"
 import About from "src/components/home/About"
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <meta property="og:description" content="대한생활체육회 소개, 체육회 현황, 대회정보 및 자료제공"></meta>
       </Head>
       <HomeHeader />
+      <HeaderPopup />
       <About />
     </div>
   )
