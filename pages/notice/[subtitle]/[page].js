@@ -7,6 +7,8 @@ import LocNav from "src/components/public/LocNav"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
 import NoticeList from "src/components/notice/NoticeList"
 import PhotoList from "src/components/notice/PhotoList"
+import VideoList from "src/components/notice/VideoList"
+import Head from "next/head"
 
 
 const Info = () => {
@@ -43,6 +45,13 @@ const Info = () => {
 
   return (
     <>
+      <Head>
+        <title>{`대한생활체육회|${slug.subtitle} - ${slug.page}페이지`}</title>
+        <meta name="description" content={`${slug.subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`} />
+        <meta property="og:title" content={`대한생활체육회|${slug.subtitle}`}/>
+        <meta property="og:description" content={`(사)대한생활체육회 단체소개-${slug.subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`}></meta>
+      </Head>
+
       {isPreview && <div className="preview">미리보기중입니다.</div>}
       <Banner bannerNumber={bannerRandom}/>
       <div className="subpage__container">
@@ -50,7 +59,8 @@ const Info = () => {
         <NavbarVerticle loc={title}/>
         <div className="content__container">
           <SubMenuTitle title={`${subtitle}`} subtitle={`대한생활체육회의 ${subtitle} 전해드립니다.`}/>
-          {slug.subtitle === "photo" ? cusSlug && <PhotoList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} /> : 
+          {slug.subtitle === "photo" ? cusSlug && <PhotoList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} /> :
+            slug.subtitle === "video" ? cusSlug && <VideoList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} /> :
             cusSlug && <NoticeList mode="user" folderName={slug.subtitle} page={parseInt(slug.page)} />
           }
         </div>

@@ -66,6 +66,7 @@ const AddPost = (props) => {
   const [post, setPost] = useState("")
   const [fixed, setFixed] = useState(false)
   const [author, setAuthor] = useState("")
+  const [videoThumbnail, setVideoThumbnail] = useState("")
   const router = useRouter();
   const { user, username, userrole } = useContext(UserContext);
 
@@ -217,6 +218,17 @@ const AddPost = (props) => {
           count: doc.data().count + 1,
           fixed: fixed,
         }
+        const videoHashMap = {
+          title: titleText,
+          createdAt: new Date(),
+          author: author,
+          files: resultOfUploadFiles,
+          uid: user.uid,
+          post: postText,
+          thumbnail: videoThumbnail,
+          count: doc.data().count + 1,
+          fixed: fixed,
+        }
 
         if (props.folderName==="photo") {
           if (imageHashMap.thumbnail === "") {
@@ -224,22 +236,34 @@ const AddPost = (props) => {
             return;
           }
         }
-          if (props.folderName === "photo") {
-            db.collection("photo").add(imageHashMap)
-            controlPostCount("photo","add")
+        if (props.folderName === "video") {
+          if (videoHashMap.thumbnail === "") {
+            alert("동영상갤러리에는 썸네일이 될 메인 동영상이 필요합니다!")
+            return;
           }
-          else {
-            db.collection(props.folderName).add(postHashMap)
-              .then((docRef) => {
-                if (fixed)
-                  db.collection("fixed").doc(docRef.id).set({createdAt: new Date()})
-            })
-            controlPostCount(props.folderName,"add")
+        }
+
+        if (props.folderName === "photo") {
+          db.collection("photo").add(imageHashMap)
+          controlPostCount("photo","add")
+        }
+        else if (props.folderName === "video") {
+          db.collection("video").add(videoHashMap)
+          controlPostCount("video","add")
+        }
+        else {
+          db.collection(props.folderName).add(postHashMap)
+            .then((docRef) => {
+              if (fixed)
+                db.collection("fixed").doc(docRef.id).set({createdAt: new Date()})
+          })
+          controlPostCount(props.folderName,"add")
         }
         
 
         setTitleText("")
         setFileList([])
+        setVideoThumbnail("")
         setPost([])
         setTextData("")
         setImgHTML("")
@@ -321,15 +345,25 @@ const AddPost = (props) => {
     setFixed(e.currentTarget.checked)
   }
 
+  const onVideoThumbnailChange = (e) => {
+    setVideoThumbnail(e.target.value)
+  }
+
   return (
     <form className={style.mainContainer}>
       <div className={`${style.container} ${style.container1}`}>
         <h4>제목</h4>
         <p>제목 문구 : <input type="text" value={titleText} onChange={onTitleChange} size="60" required/></p>
       </div>
-      {props.folderName !== "photo" &&
+      {props.folderName !== "photo" && props.folderName !== "video" &&
         <div className={`${style.container} ${style.container2}`}>
           <h4>상단고정</h4><input onChange={onCheckboxChange} type="checkbox"></input>
+        </div>
+      }
+      {props.folderName === "video" &&
+        <div className={`${style.container} ${style.container1}`}>
+          <h4>동영상썸네일</h4>
+          <p>메인동영상 주소 : <input type="text" value={videoThumbnail} onChange={onVideoThumbnailChange} size="60" required/></p>
         </div>
       }
       <div className={`${style.container} ${style.container1}`}>

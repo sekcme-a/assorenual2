@@ -7,6 +7,7 @@ import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
 import NoticeList from "src/components/notice/NoticeList"
 import PhotoList from "src/components/notice/PhotoList"
+import VideoList from "src/components/notice/VideoList"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AddPost from "admin/src/component/AddPost"
@@ -102,7 +103,10 @@ const PostList = (props) => {
           {props.folderName === "photo" ?
             <PhotoList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
             :
-            <NoticeList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
+            props.folderName === "video" ?
+            <VideoList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
+            :
+              <NoticeList page={currentPage} folderName={props.folderName} mode="admin" getPostName={(pn) => setSelectedPost(pn)} />
           }
           <ul className={style.pagination}>
             {warpPage && (warpPage[0] !== 0 &&

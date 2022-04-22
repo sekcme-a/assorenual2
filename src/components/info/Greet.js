@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
 import { firestore as db } from "src/firebase/firebase"
-
+import Head from "next/head"
 const Greet = (props) => {
   const ref = useRef();
 
@@ -115,39 +115,47 @@ const Greet = (props) => {
     fetchData()
   },[])
 
-  return (  
-    <div className={style.container}>
-      <SubMenuTitle title="총재 인사말" subtitle="대한생활체육회 총재 김균식의 인사말입니다."/>
-      <motion.div className={style.content__container}
-        initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 1 } }}>
-        {/* <Image
-          src={imgURL}
-          height={180}
-          width={150}
-          alt="총재 김균식" /> */}
-        <img src={imgURL} alt="총재" className={style.image}></img>
-        <h6>{imgTitle}</h6>
-          <h4>{title}</h4>
-        <h5>{subtitle}</h5><br /><br />
-        <div className={style.text__container}>
-          <div ref={inViewRef}><div ref={inHideRef}>
-            {context1.map((item, index) => (
-              <motion.p initial={{opacity: 0}} animate={ani1} key={index}>{item} <br /></motion.p>
-          ))}
-          </div></div>
-          <div ref={inViewRef1}><div ref={inHideRef1}>
-            {context2.map((item, index) => (
-              <motion.p initial={{opacity: 0}} animate={ani2} key={index}>{item} <br /></motion.p>
-          ))}
-          </div></div>
-          <div ref={inViewRef2}><div ref={inHideRef2}>
-            {context3.map((item, index) => (
-              <motion.p initial={{opacity: 0}} animate={ani3} key={index} >{item} <br /></motion.p>
-          ))}
+  return (
+    <>
+      <Head>
+        <title>대한생활체육회|총재인삿말</title>
+        <meta name="description" content="(사)대한생활체육회 총재 김균식 총재 인삿말 - 어게인 필승 코리아!!" />
+        <meta property="og:title" content="대한생활체육회|총재인삿말" />
+        <meta property="og:description" content="(사)대한생활체육회 총재 김균식 총재 인삿말 - 어게인 필승 코리아!!"></meta>
+      </Head>
+      <div className={style.container}>
+        <SubMenuTitle title="총재 인사말" subtitle="대한생활체육회 총재 김균식의 인사말입니다."/>
+        <motion.div className={style.content__container}
+          initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 1 } }}>
+          {/* <Image
+            src={imgURL}
+            height={180}
+            width={150}
+            alt="총재 김균식" /> */}
+          <img src={imgURL} alt="총재" className={style.image}></img>
+          <h6>{imgTitle}</h6>
+            <h4>{title}</h4>
+          <h5>{subtitle}</h5><br /><br />
+          <div className={style.text__container}>
+            <div ref={inViewRef}><div ref={inHideRef}>
+              {context1.map((item, index) => (
+                <motion.p initial={{opacity: 0}} animate={ani1} key={index}>{item} <br /></motion.p>
+            ))}
             </div></div>
-        </div>
-      </motion.div>
-    </div>
+            <div ref={inViewRef1}><div ref={inHideRef1}>
+              {context2.map((item, index) => (
+                <motion.p initial={{opacity: 0}} animate={ani2} key={index}>{item} <br /></motion.p>
+            ))}
+            </div></div>
+            <div ref={inViewRef2}><div ref={inHideRef2}>
+              {context3.map((item, index) => (
+                <motion.p initial={{opacity: 0}} animate={ani3} key={index} >{item} <br /></motion.p>
+            ))}
+              </div></div>
+          </div>
+        </motion.div>
+      </div>
+    </>
   )
 }
 

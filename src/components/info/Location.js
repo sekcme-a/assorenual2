@@ -4,6 +4,7 @@ import SubMenuTitle from "src/components/public/SubMenuTitle"
 import style from "styles/info/location.module.css"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
+import Head from "next/head"
 
 const Location = (props) => {
 
@@ -41,6 +42,12 @@ const Location = (props) => {
 
   return (
     <>
+      <Head>
+        <title>대한생활체육회|오시는길</title>
+        <meta name="description" content="(사)대한생활체육회 오시는 길 - 서울특별시 영등포구 버드나루로88, 인따르시아빌딩 101호" />
+        <meta property="og:title" content="대한생활체육회|오시는길" />
+        <meta property="og:description" content="(사)대한생활체육회 오시는 길 - 서울특별시 영등포구 버드나루로88, 인따르시아빌딩 101호"></meta>
+      </Head>
       { isLoading?<Loader /> :
         <>
           <SubMenuTitle title="오시는 길" subtitle="대한생활체육회로 오시는 길을 안내드립니다." />

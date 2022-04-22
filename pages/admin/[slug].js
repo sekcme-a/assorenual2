@@ -80,6 +80,7 @@ const Admin = () => {
               {slug === "editresult" && <PostList folderName="result" postPerPage={9}/>}
               {slug === "editschedule" && <PostList folderName="schedule" postPerPage={9} />}
               {slug === "editmedia" && <PostList folderName="media" postPerPage={9} />}
+              {slug === "editvideo" && <PostList folderName="video" postPerPage={16} />}
             </div>
           </>
         ) : (

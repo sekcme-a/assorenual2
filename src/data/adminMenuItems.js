@@ -163,6 +163,14 @@ export const adminMenuItems = [
     level: "author",
   },
   {
+    type: "sub",
+    title: '알림마당 편집',
+    child: false,
+    subtitle: '동영상갤러리 편집',
+    path: '/editvideo',
+    level: "author",
+  },
+  {
     type: "main",
     title: '자료실 편집',
     child: true,

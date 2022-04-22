@@ -4,6 +4,7 @@ import HeaderPopup from "src/components/home/HeaderPopup"
 import Article from "src/components/home/Article"
 import About from "src/components/home/About"
 import Video from "src/components/home/Video"
+import Photo from "src/components/home/Photo"
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Article />
       <Video />
       <About />
+      <Photo />
     </div>
   )
 }

@@ -41,6 +41,13 @@ const Group = () => {
 
   return (
     <>
+      <Head>
+        <title>{`대한생활체육회|${subtitle}`}</title>
+        <meta name="description" content={`(사)대한생활체육회 단체소개-${subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`} />
+        <meta property="og:title" content={`대한생활체육회|${subtitle}`}/>
+        <meta property="og:description" content={`(사)대한생활체육회 단체소개-${subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`}></meta>
+      </Head>
+      
       {isPreview && <div className="preview">미리보기중입니다.</div>}
       <Banner bannerNumber={bannerRandom}/>
       <div className="subpage__container">

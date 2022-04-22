@@ -4,6 +4,7 @@ import style from "styles/info/purpose.module.css"
 import { motion } from "framer-motion"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
+import Head from "next/head"
 
 const Purpose = (props) => {
   const aniDelay = 0.2;
@@ -37,6 +38,12 @@ const Purpose = (props) => {
   },[])
   return (
     <>
+      <Head>
+        <title>대한생활체육회|설립목적,연혁</title>
+        <meta name="description" content="(사)대한생활체육회 설립목적 및 연혁 - 스포츠가 최고의 국민건강 복지다" />
+        <meta property="og:title" content="대한생활체육회|설립목적,연혁" />
+        <meta property="og:description" content="(사)대한생활체육회 설립목적 및 연혁 - 스포츠가 최고의 국민건강 복지다"></meta>
+      </Head>
       {isLoading ? <Loader /> :
         <>
           <SubMenuTitle title="설립목적" subtitle="대한생활체육회의 설립목적을 소개합니다." />

@@ -160,6 +160,13 @@ export const MenuItems = [
     highlight: "photo",
   },
   {
+    type: "sub",
+    title: '알림마당',
+    subtitle: '동영상갤러리',
+    path: '/notice/video',
+    highlight: "video",
+  },
+  {
     type: "main",
     title: '자료실',
     child: true,
