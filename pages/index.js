@@ -3,6 +3,7 @@ import HomeHeader from "src/components/home/HomeHeader"
 import HeaderPopup from "src/components/home/HeaderPopup"
 import Article from "src/components/home/Article"
 import About from "src/components/home/About"
+import Video from "src/components/home/Video"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <HomeHeader />
       <HeaderPopup />
       <Article />
+      <Video />
       <About />
     </div>
   )
