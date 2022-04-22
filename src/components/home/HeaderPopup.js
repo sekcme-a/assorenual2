@@ -31,11 +31,11 @@ const HeaderPopup = () => {
       await db.collection("setting").doc("mainPopup").get().then((doc) => {
         const res = JSON.parse(doc.data().data)
         res.forEach(async (item) => {
-          list2.push(item.link)
-          setLinkList(list2)
           await storage.ref(`mainPopup/${item.img}`).getDownloadURL().then((url) => {
             list.push(url)
             setUrlList(list)
+                      list2.push(item.link)
+          setLinkList(list2)
           })
         })
         setIsLoading(false)
