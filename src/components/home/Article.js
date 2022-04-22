@@ -67,9 +67,9 @@ const Article = () => {
     <div className={style.container}>
       <div className={style.articleContainer}>
         <ul className={style.tab}>
-          <li onClick={()=>onTabClick(0)} className={selected==="anouncement" && `${style.selected}`}>공지/소식사항</li>
-          <li onClick={() => onTabClick(1)} className={selected==="media" && `${style.selected}`}>언론보도</li>
-          <li onClick={() => onTabClick(2)} className={selected==="schedule" && `${style.selected}`}>대회/행사일정</li>
+          <li onClick={()=>onTabClick(0)} className={selected==="anouncement" ? `${style.selected}` : undefined}>공지/소식사항</li>
+          <li onClick={() => onTabClick(1)} className={selected==="media" ? `${style.selected}` : undefined}>언론보도</li>
+          <li onClick={() => onTabClick(2)} className={selected==="schedule" ? `${style.selected}` : undefined}>대회/행사일정</li>
           <Link href='notice/anouncement/1'><li> +</li></Link>
         </ul>
         <ul className={style.contentContainer}>
