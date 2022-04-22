@@ -129,19 +129,19 @@ const VideoList = (props) => {
           <ul className={style.list}>
             {listData.map((item, index) => {
               return (
-                <li key={index} className={style.imgTable}>
-                  {item.thumbnail && (
-                    <div className={style.videoContainer}>
-                      <ReactPlayer className={style.video}url={item.thumbnail} playing={false} muted={mute} controls={true} light={true} pip={true}/>
-                    </div>
-                  )}
-                  <Link  href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                <Link  href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                  <li key={index} className={style.imgTable}>
+                    {item.thumbnail && (
+                      <div className={style.videoContainer}>
+                        <ReactPlayer className={style.video}url={item.thumbnail} playing={false} muted={mute} controls={true} light={true} pip={true}/>
+                      </div>
+                    )}
                     <div className={style.textContainer}>
                       <div className={style.imgTitle}>{item.title}</div>
                       <div className={style.imgCreatedAt}>{item.createdAt}</div>
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               )
             })}
           </ul>
