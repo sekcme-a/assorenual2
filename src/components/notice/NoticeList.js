@@ -30,8 +30,7 @@ const NoticeList = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // setListData(tempData)
-      // setFixedList(tempData)
+      setFixedList([])
       await db.collection("fixed").orderBy("createdAt", "desc").get().then(async (query) => {
         query.forEach((doc) => {
           if (db.collection(props.folderName).doc(doc.id)) {
@@ -150,7 +149,7 @@ const NoticeList = (props) => {
       }
     }
     fetchData();
-  }, [props])
+  }, [props.folderName])
 
   const onListClicked = (id) => {
     props.getPostName(id)
