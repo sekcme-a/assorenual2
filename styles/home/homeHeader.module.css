@@ -21,7 +21,7 @@
 .banner__content {
   display: flex;
   align-items: center;
-  height: 75vh;
+  height: 600px;
   /* color: #fff; */
   color: black;
   background-color: rgba(225, 253, 255, 0.178);
@@ -120,7 +120,7 @@
 
   /*custom*/
   .banner {
-    height: 50vh;
+    height: 300px;
   }
 
   .banner__content {
