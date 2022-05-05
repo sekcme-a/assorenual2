@@ -131,7 +131,7 @@ const Photo = () => {
                       <ReactPlayer className={style.video}url={item.thumbnail} playing={false} muted={mute} controls={true} light={true} pip={true}/>
                     </div>
                   )}
-                  <Link  href='/article/[filename]/[page]/[id]' as={`/article/"video"/1/${item.id}`}>
+                  <Link  href='/article/[filename]/[page]/[id]' as={`/article/video/1/${item.id}`}>
                     <div className={style.textContainer}>
                       <div className={style.imgTitle}>{item.title}</div>
                       <div className={style.imgCreatedAt}>{item.createdAt}</div>
