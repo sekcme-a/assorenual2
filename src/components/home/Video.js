@@ -31,7 +31,7 @@ const Video = () => {
   }
 
   return (
-    <div className={style.container} onClick={()=>console.log("adf")} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <div className={style.container} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {/* <iframe class={style.video} frameborder="0" allowfullscreen="true" src="https://www.youtube.com/embed/Js--VXw57GQ?showinfo=0" /> */}
         <ReactPlayer
           url={url}    // 플레이어 url
