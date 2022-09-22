@@ -39,8 +39,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <UserContext.Provider value={userData}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>대한생활체육회</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
             <Script
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=10143b83ffc3b3f9b4dfefb69908cb81&libraries=services,clusterer&autoload=false`}
