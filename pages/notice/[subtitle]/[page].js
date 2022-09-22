@@ -46,10 +46,10 @@ const Info = () => {
   return (
     <>
       <Head>
-        <title>{`대한생활체육회|${slug.subtitle} - ${slug.page}페이지`}</title>
-        <meta name="description" content={`${slug.subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`} />
-        <meta property="og:title" content={`대한생활체육회|${slug.subtitle}`}/>
-        <meta property="og:description" content={`(사)대한생활체육회 단체소개-${slug.subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`}></meta>
+        <title>{`대한생활체육회|${subtitle} - ${page}페이지`}</title>
+        <meta name="description" content={`${subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`} />
+        <meta property="og:title" content={`대한생활체육회|${subtitle}`}/>
+        <meta property="og:description" content={`(사)대한생활체육회 단체소개-${subtitle} - 국민의 건강과 행복의 장을 여는 대한생활체육회`}></meta>
       </Head>
 
       {isPreview && <div className="preview">미리보기중입니다.</div>}
