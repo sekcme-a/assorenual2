@@ -47,10 +47,10 @@ const Navbar = () => {
           />
         </Link>
       </div>
-      <div className="mobile-menu-icon" onClick={handleClick}>
+      {/* <div className="mobile-menu-icon" onClick={handleClick}>
         <Link href="http://ksfaa.co.kr"><a className="mobile-login" target="_blank">회원가입 및 회원증 확인</a></Link>
         {click ? <CloseIcon />:<MenuIcon />}
-      </div>
+      </div> */}
       <ul className={click ? 'mobile-nav-menu active' : 'mobile-nav-menu'}>
         {MenuItems.map((item, index) => {
           return (
