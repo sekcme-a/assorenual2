@@ -54,8 +54,8 @@ function MyApp({ Component, pageProps }) {
           <meta property="og:image" content="https://www.xn--vk1by6x29i.com/public/logo-circle.png" />
           <meta property="og:url" content="https://www.xn--vk1by6x29i.com"></meta>
           <meta name="keywords" content="대한생활체육회"/>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-          {/* <meta name="naver-site-verification" content="a25127b45ca7a3bdbc3769501f80f6e529deb6f3" /> */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <meta name="naver-site-verification" content="921615fec807de8b4e53a6410fe541bd04ba8429" />
 
       </Head>
             <Script
