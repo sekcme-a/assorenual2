@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
-import style from "styles/info/purpose.module.css"
+import style from "styles/information/purpose.module.css"
 import { motion } from "framer-motion"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
@@ -42,7 +42,7 @@ const Purpose = (props) => {
        <HeadMeta
         title="대한생활체육회 - 설립목적"
         description="대한생활체육회의 설립목적을 소개합니다 - 국민의 건강과 행복의 장을 여는 대한생활체육회"
-        url="https://xn--vk1by6x29i.com/info/purpose"
+        url="https://xn--vk1by6x29i.com/information/purpose"
       />
       {isLoading ? <Loader /> :
         <>

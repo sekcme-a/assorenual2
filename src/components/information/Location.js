@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import Map from "src/components/info/Map"
+import Map from "src/components/information/Map"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
-import style from "styles/info/location.module.css"
+import style from "styles/information/location.module.css"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
 import Head from "next/head"
@@ -46,7 +46,7 @@ const Location = (props) => {
        <HeadMeta
         title="대한생활체육회 - 오시는 길"
         description="대한생활체육회 오시는 길 - 서울특별시 영등포구 버드나루로88, 인따르시아빌딩 101호"
-        url="https://xn--vk1by6x29i.com/info/location"
+        url="https://xn--vk1by6x29i.com/information/location"
       />
       { isLoading?<Loader /> :
         <>

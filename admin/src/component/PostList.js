@@ -2,12 +2,12 @@ import React, { useEffect, useState} from "react"
 import { firestore as db } from "src/firebase/firebase"
 import Link from "next/link"
 import style from "admin/styles/postList.module.css"
-import Pagination from "src/components/notice/Pagination"
+import Pagination from "src/components/file/Pagination"
 import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
-import NoticeList from "src/components/notice/NoticeList"
-import PhotoList from "src/components/notice/PhotoList"
-import VideoList from "src/components/notice/VideoList"
+import NoticeList from "src/components/file/NoticeList"
+import PhotoList from "src/components/file/PhotoList"
+import VideoList from "src/components/file/VideoList"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AddPost from "admin/src/component/AddPost"

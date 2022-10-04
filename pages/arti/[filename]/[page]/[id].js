@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
-import style from "styles/article/article.module.css"
+import style from "styles/arti/article.module.css"
 import { firestore as db } from "src/firebase/firebase"
 import Link from "next/link"
 import dynamic from 'next/dynamic'
@@ -40,7 +40,7 @@ const ShowArticle = () => {
   useEffect(() => {
     setBannerRandom(getRandom(1, 5))
     MenuItems.forEach((item) => {
-      if (item.path === `/notice/${data.filename}`) {
+      if (item.path === `/file/${data.filename}`) {
         setTitle(item.title)
         setSubtitle(item.subtitle)
         return;
@@ -53,7 +53,7 @@ const ShowArticle = () => {
   useEffect(async () => {
     setHasPostFile(false)
     // MenuItems.forEach((item) => {
-    //   if (item.path === `/notice/${data.filename}`) {
+    //   if (item.path === `/file/${data.filename}`) {
     //     setTitle(item.title)
     //     setSubtitle(item.subtitle)
     //     return;
@@ -145,8 +145,8 @@ const ShowArticle = () => {
               )}
           <QuillNoSSRWrapper className={style.quillContainer} value={postContent} readOnly={true} theme="bubble" />
             <div className={style.buttonContainer}>
-              <Link href="/notice/[subtitle]/[page]"as={`/notice/${data.filename}/${data.page}`}>
-                <div className={style.button} >돌아가기</div>
+              <Link passHref href="/file/[subtitle]/[page]"as={`/file/${data.filename}/${data.page}`}>
+                <a><div className={style.button} >돌아가기</div></a>
               </Link>
             </div>
           </div>

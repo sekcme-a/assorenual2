@@ -54,25 +54,27 @@ function DropdownPc(props) {
                   {(item.title === props.mainTitle) && ((item.type === "sub") && (
                     item.highlight === "link" ?
                       <li key={index} className="dropdown-text">
-                        <Link href="http://ksfaa.co.kr">
+                        <Link href="http://ksfaa.co.kr" passHref>
                           <a className="dropdown-link" target='_blank' onClick={() => setClick(false)}>
                             {item.subtitle}
                           </a>
                         </Link>
                       </li>
                       : 
-                    item.path.includes("notice") ?
+                    item.path.includes("file") ?
                       <li key={index} className="dropdown-text">
                         <Link
                           className="dropdown-link"
-                          href={"/notice/[subtitle]/[page]"}
+                          href={"/file/[subtitle]/[page]"}
                           as={`${item.path}/1`}
                           passHref
                           onClick={() => setClick(false)}
                         >
+                          <a>
                           <div className="dropdown-link">
                             {item.subtitle}
-                          </div>
+                              </div>
+                              </a>
                         </Link>
                       </li>
                       :
@@ -82,10 +84,12 @@ function DropdownPc(props) {
                           href={item.path}
                           passHref
                           onClick={() => setClick(false)}
-                        >
+                          >
+                            <a>
                           <div className="dropdown-link">
                             {item.subtitle}
-                          </div>
+                              </div>
+                              </a>
                         </Link>
                       </li>
                 ))}
@@ -104,7 +108,7 @@ function DropdownPc(props) {
                       {(item.title === subItem) && ((item.type === "sub") && (
                         item.highlight === "link" ?
                           <li key={index} className="dropdown-text">
-                            <Link href="http://ksfaa.co.kr">
+                            <Link href="http://ksfaa.co.kr" passHref>
                               <a className="dropdown-link" target='_blank' onClick={() => setClick(false)}>
                                 {item.subtitle}
                               </a>
@@ -115,14 +119,16 @@ function DropdownPc(props) {
                           <li key={index} className="dropdown-text">
                             <Link
                               className="dropdown-link"
-                              href={"/notice/[subtitle]/[page]"}
+                              href={"/file/[subtitle]/[page]"}
                               as={`${item.path}/1`}
                               passHref
                               onClick={() => setClick(false)}
-                            >
+                              >
+                                <a>
                               <div className="dropdown-link">
                                 {item.subtitle}
-                              </div>
+                                  </div>
+                                  </a>
                             </Link>
                           </li>
                           :
@@ -132,10 +138,12 @@ function DropdownPc(props) {
                               href={item.path}
                               passHref
                               onClick={() => setClick(false)}
-                            >
+                              >
+                                <a>
                               <div className="dropdown-link">
                                 {item.subtitle}
-                              </div>
+                                  </div>
+                                  </a>
                             </Link>
                           </li>
                     ))}

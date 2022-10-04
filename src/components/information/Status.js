@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { firestore as db, storage } from "src/firebase/firebase"
-import style from "styles/info/status.module.css"
+import style from "styles/information/status.module.css"
 import Image from "next/image"
 import Head from "next/head"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
@@ -86,7 +86,7 @@ const Status = (props) => {
        <HeadMeta
         title="대한생활체육회 - 임원현황"
         description="대한생활체육회의 임원현황을 알려드립니다 - 국민의 건강과 행복의 장을 여는 대한생활체육회"
-        url="https://xn--vk1by6x29i.com/info/status"
+        url="https://xn--vk1by6x29i.com/information/status"
       />
       <div className={style.customBodyStatus}>
       </div>

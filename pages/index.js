@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <HeadMeta
         title="대한생활체육회"
-        description="국민의 건강과 행복의 장을 여는 대한생활체육회. 국민생활체육의 권장, 발전을 목표로 하고 있습니다."
+        description="대한생활체육회는 순수 민간 비영리 법인단체로서 정치, 종교, 등 모든 분야와 무관한 국민생활체육의 권장, 발전을 목표로 하고 있습니다."
         url="https://xn--vk1by6x29i.com"
       />
       <div>

@@ -38,13 +38,15 @@ const Navbar = () => {
     <div className="navbar-mobile">
       <div className="navbar-mobile-logo">
         <Link href="/" passHref>
+          <a>
           <Image
             src="/logo.png"
             height={50}
             width={150}
             alt="대한생활체육회 로고"
             className="navbar-logo-img"
-          />
+            />
+            </a>
         </Link>
       </div>
       <div className="mobile-menu-icon" onClick={handleClick}>
@@ -67,7 +69,7 @@ const Navbar = () => {
                       item.highlight === "link" ?
                       
                         <li key={index} className="mobile-nav-item">
-                          <Link href="http://ksfaa.co.kr">
+                          <Link href="http://ksfaa.co.kr" passHref>
                             <a target='_blank' onClick={closeMobileMenu}>
                               {item.subtitle}
                             </a>
@@ -75,17 +77,21 @@ const Navbar = () => {
                         </li>
                       
                       : 
-                      item.path.includes("notice") ?
-                        <Link href={"/notice/[subtitle]/[page]"} as={`${item.path}/1`}>
+                      item.path.includes("file") ?
+                        <Link href={"/file/[subtitle]/[page]"} as={`${item.path}/1`} passHref>
+                          <a>
                           <li key={index} className="mobile-nav-item" onClick={closeMobileMenu}>
                             {item.subtitle}
-                          </li>
+                              </li>
+                              </a>
                         </Link>
                         :
                         <Link href={item.path} passHref>
+                          <a>
                           <li key={index} className="mobile-nav-item" onClick={closeMobileMenu}>
                             {item.subtitle}
-                          </li>
+                              </li>
+                              </a>
                         </Link>
                     )
                   ))}

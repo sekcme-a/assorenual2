@@ -25,7 +25,7 @@
   margin: 0 30px;
   color: rgb(255, 115, 0);
 }
-.tab li{
+.tab p{
   font-size: 22px;
   padding: 0 20px 0 20px;
   margin-top: 40px;
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
 }
-.tab li:last-child{
+.tab p:last-child{
   border: none;
   /* font-size: 30px; */
   /* padding-left: 80px;
@@ -52,7 +52,7 @@
   margin: 10px 15px 10px 65px;
   list-style:square;
 }
-.contentContainer li{
+.contentContainer div{
   padding: 8px 0;
   display: flex;
   flex-wrap: wrap;
@@ -63,22 +63,22 @@
   /* border-bottom: 1px solid rgb(255, 162, 86) */
 
 }
-.contentContainer li:hover{
+.contentContainer div:hover{
   margin-left: 10px;
   color:rgb(255, 115, 0) !important;
 }
-.contentContainer li p{
+.contentContainer div p{
   width: fit-content;
   padding-right: 5px;
   font-size: 5px;
 }
-.contentContainer li .createdAt{
+.contentContainer div .createdAt{
   width: fit-content;
   padding-right: 10px;
   font-size: 15px;
 }
 
-.contentContainer li .title{
+.contentContainer div .title{
   width: 75%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -93,12 +93,12 @@
   .container{height: 300px}
   .articleContainer{height: 280px}
   .tab{height: 60px;}
-  .tab li{
+  .tab p{
     margin-top: 20px;
     font-size: 17px;
     padding: 0 10px;
   }
-  .tab li:last-child{
+  .tab p:last-child{
     padding-left: 20px;
   }
   .contentContainer{
@@ -137,13 +137,13 @@
   .container{height: 300px}
   .articleContainer{height: 230px; margin: 0 5px; width: 600px}
   .tab{height: 50px; margin: 0 15px}
-  .tab li{
+  .tab p{
     margin-top: 15px;
     font-size: 15px;
     padding: 0 5px;
     
   }
-  .tab li:last-child{
+  .tab p:last-child{
     padding-left: 20px;
   }
   .contentContainer{
@@ -153,21 +153,21 @@
   .contentContainer .createdAt{
     display: none;
   }
-  .contentContainer li{
+  .contentContainer div{
     /* width: 300px; */
     font-size: 13px;
     padding: 7px 5px;
   }
 }
 @media screen and (max-width: 421px) {
-  .contentContainer li .title{
+  .contentContainer div .title{
     width: 310px;
   }
   .tab{
     padding: 0;
     margin: 0 10px;
   }
-  .tab li{
+  .tab p{
     font-size: 15px;
   }
   .articleContainer{
@@ -176,22 +176,22 @@
   }
 }
 @media screen and (max-width: 373px){
-  .contentContainer li .title{
+  .contentContainer div .title{
     width: 250px;
   }
   .tab{
     height: 40px;
   }
-  .tab li{
+  .tab p{
     margin-top: 10px;
     font-size: 13px;
   }
 }
 @media screen and (max-width: 320px){
-  .contentContainer li .title{
+  .contentContainer div .title{
     width: 200px;
   }
-  .tab li{
+  .tab p{
     font-size: 12px;
   }
 }

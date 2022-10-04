@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from "react"
 import { firestore as db } from "src/firebase/firebase"
 import Link from "next/link"
-import style from "styles/notice/photoList.module.css"
-import Pagination from "src/components/notice/Pagination"
+import style from "styles/file/photoList.module.css"
+import Pagination from "src/components/file/Pagination"
 import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
 
@@ -129,8 +129,8 @@ const PhotoList = (props) => {
           <ul className={style.list}>
             {listData.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  <li className={style.imgTable}>
+                <Link key={index} passHref href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                  <a><li className={style.imgTable}>
                     {item.thumbnail && (
                       <div className={style.imgContainer}>
                         <img src={item.thumbnail} alt={item.title}/>
@@ -141,6 +141,7 @@ const PhotoList = (props) => {
                       <div className={style.imgCreatedAt}>{item.createdAt}</div>
                     </div>
                   </li>
+                    </a>
                 </Link>
               )
             })}
@@ -168,19 +169,21 @@ const PhotoList = (props) => {
               :
               listData.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
-                  <li className={style.imgTable}>
-                    {item.thumbnail && (
-                      <div className={style.imgContainer}>
-                        <img src={item.thumbnail} alt={item.title}/>
-                      </div>
-                    )}
+             <li key={index} className={style.imgTable}>
+                  {item.thumbnail && (
+                    <div className={style.videoContainer}>
+                      <img className={style.video}src={item.thumbnail}/>
+                    </div>
+                  )}
+                  <Link passHref  href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                    <a>
                     <div className={style.textContainer}>
                       <div className={style.imgTitle}>{item.title}</div>
                       <div className={style.imgCreatedAt}>{item.createdAt}</div>
-                    </div>
-                  </li>
-                </Link>
+                      </div>
+                      </a>
+                  </Link>
+                </li>
               )
             })}
           </ul>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import SubMenuTitle from "src/components/public/SubMenuTitle"
-import style from "styles/info/chart.module.css"
+import style from "styles/information/chart.module.css"
 import { firestore as db } from "src/firebase/firebase"
 import Loader from "src/components/public/Loader"
 import Link from "next/link"
@@ -33,7 +33,7 @@ const Chart = (props) => {
        <HeadMeta
         title="대한생활체육회 - 중앙 조직도"
         description="대한생활체육회의 중앙 조직도를 소개합니다 - 국민의 건강과 행복의 장을 여는 대한생활체육회"
-        url="https://xn--vk1by6x29i.com/info/chart"
+        url="https://xn--vk1by6x29i.com/information/chart"
       />
 
       <SubMenuTitle title="중앙 조직도" subtitle="대한생활체육회의 중앙 조직도를 소개합니다."/>

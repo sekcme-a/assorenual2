@@ -4,11 +4,11 @@ import Banner from "src/components/public/Banner"
 import NavbarVerticle from "src/components/public/NavbarVerticle"
 import { MenuItems } from "src/data/menuItems"
 import LocNav from "src/components/public/LocNav"
-import Greet from "src/components/info/Greet"
-import Purpose from "src/components/info/Purpose"
-import Chart from "src/components/info/Chart"
-import Status from "src/components/info/Status"
-import Location from "src/components/info/Location"
+import Greet from "src/components/information/Greet"
+import Purpose from "src/components/information/Purpose"
+import Chart from "src/components/information/Chart"
+import Status from "src/components/information/Status"
+import Location from "src/components/information/Location"
 import Head from "next/head"
 import HeadMeta from "src/components/public/HeadMeta"
 
@@ -35,7 +35,7 @@ const Info = () => {
     if (path ==="statusPreview") {path = "status"; setIsPreview(true) }
     if (path === "locationPreview") {path = "location"; setIsPreview(true) }
     MenuItems.forEach((item) => {
-      if (item.path === `/info/${path}`) {
+      if (item.path === `/information/${path}`) {
         setTitle(item.title)
         setSubtitle(item.subtitle)
         return;
@@ -46,7 +46,11 @@ const Info = () => {
 
   return (
     <>
-      
+      <HeadMeta
+      title="대한생활체육회 - 체육회 소개"
+      description="대한생활체육회의 총재 인삿말, 설립목적, 중앙조직도 등을 소개합니다."
+      url="https://xn--vk1by6x29i.com/information/greet"
+      />
       {isPreview && <div className="preview">미리보기중입니다.</div>}
       <Banner bannerNumber={bannerRandom}/>
       <div className="subpage__container">

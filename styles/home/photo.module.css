@@ -74,7 +74,8 @@
 
 
 .list{
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   /* width: 9%; */
   margin: auto;
   width: 100%;
@@ -92,11 +93,20 @@
   list-style: none;
   margin-top: 15px;
   overflow-x: auto;
-  max-width: 100%;
-  width: 100%;
+  width: 250px;
   box-sizing: border-box;
   border: 1px solid rgb(176, 176, 176);
 }
+@media (max-width: 600px){
+  .imgTable{
+    width: 45%;
+  }
+}
+/* @media (max-width: 400px){
+  .imgTable{
+    width: 100%;
+  }
+} */
 .imgTable .imgContainer{
   width: 100%;
   height: 75%;

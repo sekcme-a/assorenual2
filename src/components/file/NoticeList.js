@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from "react"
 import { firestore as db } from "src/firebase/firebase"
 import Link from "next/link"
-import style from "styles/notice/noticeList.module.css"
-import Pagination from "src/components/notice/Pagination"
+import style from "styles/file/noticeList.module.css"
+import Pagination from "src/components/file/Pagination"
 import Loader from "src/components/public/Loader"
 import CampaignIcon from '@mui/icons-material/Campaign';
 
@@ -166,20 +166,23 @@ const NoticeList = (props) => {
           <ul>
             {fixedList.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                <Link passhref key={index} href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                  <a>
                   <li className={`${style.table} ${style.fixed}`}>
                     <p className={style.count}><CampaignIcon /></p>
                       <h4 className={style.title}>
                         {item.title}
                         <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
                       </h4>
-                  </li>
+                    </li>
+                    </a>
                 </Link>
               )
             })}
             {listData.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                <Link passhref key={index} href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                  <a>
                     <li className={style.table}>
                       <p className={style.count}>{item.count}</p>
                       <h4 className={style.title}>
@@ -187,6 +190,7 @@ const NoticeList = (props) => {
                         <h4 className={style.mobile}>{item.createdAt} | {item.author}</h4>
                       </h4>
                     </li>
+                  </a>
                 </Link>
               )
             })}
@@ -213,13 +217,15 @@ const NoticeList = (props) => {
             })
             : fixedList.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                <Link passhref key={index} href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                  <a>
                   <li className={`${style.table} ${style.fixed}`}>
                     <p className={style.count}><CampaignIcon /></p>
                     <h4 className={style.title}>{item.title}</h4>
                     <h4 className={style.createdAt}>{item.createdAt}</h4>
                     <h4 className={style.author}>{item.author}</h4>
-                  </li>
+                    </li>
+                    </a>
                 </Link>
               )
             })
@@ -239,13 +245,15 @@ const NoticeList = (props) => {
               :
               listData.map((item, index) => {
               return (
-                <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${props.folderName}/${props.page}/${item.id}`}>
+                <Link passhref key={index} href='/arti/[filename]/[page]/[id]' as={`/arti/${props.folderName}/${props.page}/${item.id}`}>
+                  <a>
                   <li className={style.table}>
                     <p className={style.count}>{item.count}</p>
                     <h4 className={style.title}>{item.title}</h4>
                     <h4 className={style.createdAt}>{item.createdAt}</h4>
                     <h4 className={style.author}>{item.author}</h4>
-                  </li>
+                    </li>
+                    </a>
                 </Link>
               )
             })}

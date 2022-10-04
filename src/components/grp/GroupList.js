@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Loader from "src/components/public/Loader"
 import { firestore as db, storage } from "src/firebase/firebase"
-import style from "styles/group/groupList.module.css"
+import style from "styles/grp/groupList.module.css"
 import LazyItem from "src/components/public/LazyItem"
 import Link from "next/link"
 
@@ -69,7 +69,7 @@ const GroupList = (props) => {
                   <div className={style.contextContainer}>
                     <p>{convertData(item.data)}</p>
                     {item.homepage !== "-" &&
-                      <Link href={item.homepage}><a className={style.button} target="_blank">홈페이지 방문</a></Link>
+                      <Link passHref href={item.homepage}><a className={style.button} target="_blank">홈페이지 방문</a></Link>
                     }
                   </div>
                 </div>

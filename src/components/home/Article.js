@@ -66,25 +66,27 @@ const Article = () => {
   return (
     <div className={style.container}>
       <div className={style.articleContainer}>
-        <ul className={style.tab}>
-          <li onClick={()=>onTabClick(0)} className={selected==="anouncement" ? `${style.selected}` : undefined}>공지/소식사항</li>
-          <li onClick={() => onTabClick(1)} className={selected==="media" ? `${style.selected}` : undefined}>언론보도</li>
-          <li onClick={() => onTabClick(2)} className={selected==="schedule" ? `${style.selected}` : undefined}>대회/행사일정</li>
-          <Link href='notice/anouncement/1'><li> +</li></Link>
-        </ul>
-        <ul className={style.contentContainer}>
+        <div className={style.tab}>
+          <p onClick={()=>onTabClick(0)} className={selected==="anouncement" ? `${style.selected}` : undefined}>공지 / 소식사항</p>
+          <p onClick={() => onTabClick(1)} className={selected==="media" ? `${style.selected}` : undefined}>언론 보도</p>
+          <p onClick={() => onTabClick(2)} className={selected==="schedule" ? `${style.selected}` : undefined}>대회 / 행사일정</p>
+          <Link passHref href='notice/anouncement/1'><a><p> +</p></a></Link>
+        </div>
+        <div className={style.contentContainer}>
           {isLoading ? <Loader /> : listData.map((item, index) => {
             return (
-              <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/${selected}/1/${item.id}`}>
-                <li className={style.table}>
-                  <p>●</p>
-                  <h4 className={style.createdAt}>{item.createdAt}</h4>
-                  <h4 className={style.title}>{item.title}</h4>
-                </li>
+              <Link passHref key={index} href='/arti/[filename]/[page]/[id]' as={`/arti/${selected}/1/${item.id}`}>
+                <a>
+                  <div className={style.table}>
+                    <p>●</p>
+                    <h4 className={style.createdAt}>{item.createdAt}</h4>
+                    <h4 className={style.title}>{item.title}</h4>
+                  </div>
+                </a>
               </Link>
             )
           })}
-        </ul>
+        </div>
       </div>
     </div>    
   )

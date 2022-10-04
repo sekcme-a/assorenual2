@@ -91,25 +91,27 @@ const Photo = () => {
       <h4 className={style.title}>대한생활체육회는 지금...</h4>
       <div className={style.contentContainer}>
         <h5 className={style.subtitle}>포토갤러리</h5>
-        <Link href="/notice/photo/1">
-          <div className={style.button}>더보기</div>
+        <Link passhref href="/file/photo/1">
+          <a><div className={style.button}>더보기</div></a>
         </Link>
         <ul className={style.list}>
           {isImageLoading ? <Loader /> : listData.map((item, index) => {
             return (
-              <Link key={index} href='/article/[filename]/[page]/[id]' as={`/article/photo/1/${item.id}`}>
-                <li className={style.imgTable}>
+               <li key={index} className={style.imgTable}>
                   {item.thumbnail && (
-                    <div className={style.imgContainer}>
-                      <img src={item.thumbnail} alt={item.title}/>
+                    <div className={style.videoContainer}>
+                      <img className={style.video}src={item.thumbnail} playing={false} muted={mute} controls={true} light={true} pip={true}/>
                     </div>
                   )}
-                  <div className={style.textContainer}>
-                    <div className={style.imgTitle}>{item.title}</div>
-                    <div className={style.imgCreatedAt}>{item.createdAt}</div>
-                  </div>
+                <Link passhref href='/arti/[filename]/[page]/[id]' as={`/arti/video/1/${item.id}`}>
+                  <a>
+                    <div className={style.textContainer}>
+                      <div className={style.imgTitle}>{item.title}</div>
+                      <div className={style.imgCreatedAt}>{item.createdAt}</div>
+                    </div>
+                    </a>
+                </Link>
                 </li>
-              </Link>
             )
           })}
         </ul>
@@ -118,8 +120,8 @@ const Photo = () => {
       <div className={style.contentContainerVideo}>
         <div className={style.vidContainer}>
           <h5 className={style.subtitle2}>동영상갤러리</h5>
-          <Link href="/notice/video/1">
-            <div className={style.button2}>더보기</div>
+          <Link passhref href="/file/video/1">
+            <a><div className={style.button2}>더보기</div></a>
           </Link>
         </div>
         <ul className={style.list}>
@@ -131,12 +133,14 @@ const Photo = () => {
                       <ReactPlayer className={style.video}url={item.thumbnail} playing={false} muted={mute} controls={true} light={true} pip={true}/>
                     </div>
                   )}
-                  <Link  href='/article/[filename]/[page]/[id]' as={`/article/video/1/${item.id}`}>
+                <Link passhref href='/arti/[filename]/[page]/[id]' as={`/arti/video/1/${item.id}`}>
+                  <a>
                     <div className={style.textContainer}>
                       <div className={style.imgTitle}>{item.title}</div>
                       <div className={style.imgCreatedAt}>{item.createdAt}</div>
                     </div>
-                  </Link>
+                    </a>
+                </Link>
                 </li>
             )
           })}
